@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>The Sea</title>
+    <link>http://chun-wang.github.io/</link>
+    <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>海纳百川 有容乃大</description>
+    <pubDate>Sun, 07 Oct 2018 14:47:37 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>git-lfs</title>
+      <link>http://chun-wang.github.io/2017/01/10/2017-01-10-git-lfs/</link>
+      <guid>http://chun-wang.github.io/2017/01/10/2017-01-10-git-lfs/</guid>
+      <pubDate>Tue, 10 Jan 2017 03:51:52 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;h1 id=&quot;配置&quot;&gt;&lt;a href=&quot;#配置&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;配置&lt;/h1&gt;&lt;h1 id
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2017/01/10/2017-01-10-git-lfs/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>黑群晖配置</title>
+      <link>http://chun-wang.github.io/2016/12/15/2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/</link>
+      <guid>http://chun-wang.github.io/2016/12/15/2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/</guid>
+      <pubDate>Thu, 15 Dec 2016 15:25:07 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h3 id=&quot;引导下载&quot;&gt;&lt;a href=&quot;#引导下载&quot; class=&quot;headerlink&quot; title=&quot;引导下载&quot;&gt;&lt;/a&gt;引导下载&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[http://xpenology.me/downloads/](http://xpenology.me/d
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2016/12/15/2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>JDK多版本快速切换</title>
+      <link>http://chun-wang.github.io/2016/12/15/2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/</link>
+      <guid>http://chun-wang.github.io/2016/12/15/2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/</guid>
+      <pubDate>Thu, 15 Dec 2016 15:23:54 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;pre&gt;&lt;code&gt;export JAVA_7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+export JAVA_8_HOME=/Library/Java/JavaVirtualMa
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2016/12/15/2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Valgrind</title>
+      <link>http://chun-wang.github.io/2016/12/15/2016-12-15-Valgrind/</link>
+      <guid>http://chun-wang.github.io/2016/12/15/2016-12-15-Valgrind/</guid>
+      <pubDate>Thu, 15 Dec 2016 15:22:06 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;ol&gt;
+&lt;li&gt;使用&lt;code&gt;-fstack-check&lt;/code&gt;后会导致valgrind的main线程栈无法扩展&lt;/li&gt;
+&lt;/ol&gt;
+
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2016/12/15/2016-12-15-Valgrind/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>maven配置parent pom查找策略</title>
+      <link>http://chun-wang.github.io/2016/12/15/2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/</link>
+      <guid>http://chun-wang.github.io/2016/12/15/2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/</guid>
+      <pubDate>Thu, 15 Dec 2016 15:00:41 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;当我们在pom.xml中添加parent pom的时候，通常maven会按照如下顺序查找:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;relativePath标签指向的路径。&lt;/li&gt;
+&lt;li&gt;默认的relativePath路径”../“。&lt;/li&gt;
+&lt;li&gt;本地maven仓库。&lt;/li&gt;
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2016/12/15/2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>C&amp;C++内存检查</title>
+      <link>http://chun-wang.github.io/2015/03/30/2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/</link>
+      <guid>http://chun-wang.github.io/2015/03/30/2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/</guid>
+      <pubDate>Mon, 30 Mar 2015 14:51:52 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h3 id=&quot;Valgrind-memcheck&quot;&gt;&lt;a href=&quot;#Valgrind-memcheck&quot; class=&quot;headerlink&quot; title=&quot;Valgrind(memcheck)&quot;&gt;&lt;/a&gt;Valgrind(memcheck)&lt;/h3&gt;&lt;p&gt;valgrind
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2015/03/30/2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>shell中的正则表达式</title>
+      <link>http://chun-wang.github.io/2015/03/22/2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <guid>http://chun-wang.github.io/2015/03/22/2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <pubDate>Sun, 22 Mar 2015 09:53:57 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;使用方法很简单,例如要测试表达式中只含有数字:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[[ &amp;quot;1234&amp;quot; =~ ^[0-9]*$ ]]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为了更加清晰的知道结果, 我们可以这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[[ &amp;quot;12
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2015/03/22/2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>no title</title>
+      <link>http://chun-wang.github.io/2015/01/18/2015-01-18-No-Title/</link>
+      <guid>http://chun-wang.github.io/2015/01/18/2015-01-18-No-Title/</guid>
+      <pubDate>Sun, 18 Jan 2015 14:03:29 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;来时雨蒙蒙&lt;br&gt;去时雨茫茫&lt;br&gt;滴滴江南水&lt;br&gt;脉脉故乡情&lt;br&gt;此去 不知几时&lt;br&gt;路漫漫 他乡何所依&lt;/p&gt;
+
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2015/01/18/2015-01-18-No-Title/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Ruby工具</title>
+      <link>http://chun-wang.github.io/2015/01/14/2015-01-14-Ruby%E5%B7%A5%E5%85%B7/</link>
+      <guid>http://chun-wang.github.io/2015/01/14/2015-01-14-Ruby%E5%B7%A5%E5%85%B7/</guid>
+      <pubDate>Wed, 14 Jan 2015 07:54:29 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h3 id=&quot;Ruby&quot;&gt;&lt;a href=&quot;#Ruby&quot; class=&quot;headerlink&quot; title=&quot;Ruby&quot;&gt;&lt;/a&gt;Ruby&lt;/h3&gt;&lt;p&gt;Ruby语言解释、执行器&lt;/p&gt;
+&lt;h3 id=&quot;RVM&quot;&gt;&lt;a href=&quot;#RVM&quot; class=&quot;headerlink
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2015/01/14/2015-01-14-Ruby%E5%B7%A5%E5%85%B7/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Linux线程状态</title>
+      <link>http://chun-wang.github.io/2014/12/09/2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</link>
+      <guid>http://chun-wang.github.io/2014/12/09/2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</guid>
+      <pubDate>Tue, 09 Dec 2014 07:54:29 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;Linux任务状态列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;D    不可中断 Uninterruptible sleep (usually IO)
+R    正在运行，或在队列中的进程
+S    处于休眠状态
+T    停止或被追踪
+Z    僵尸进程
+W    进入内存交换
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2014/12/09/2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>景</title>
+      <link>http://chun-wang.github.io/2012/01/15/2012-01-15-%E6%99%AF/</link>
+      <guid>http://chun-wang.github.io/2012/01/15/2012-01-15-%E6%99%AF/</guid>
+      <pubDate>Sat, 14 Jan 2012 19:03:29 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;在渐渐散去的笑声、泪雨中，追忆着那春暖花开的日子。每一张笑脸，每一滴眼泪，每一刻即是永恒，却又似流星一闪即逝，岁月的长与短远不是时间所能衡量。在我还来不及把愿望许下，你已消失在天际。于是我怀揣着那早已支离破碎的的承诺（或许你知道，或许你早已不记得），行走在也已到来的夜幕中，
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2012/01/15/2012-01-15-%E6%99%AF/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>一枝 一叶 一思念</title>
+      <link>http://chun-wang.github.io/2012/01/15/2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5/</link>
+      <guid>http://chun-wang.github.io/2012/01/15/2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5/</guid>
+      <pubDate>Sat, 14 Jan 2012 18:03:29 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;秋叶 绿竹&lt;/p&gt;
+&lt;p&gt;春去 冬来&lt;/p&gt;
+&lt;p&gt;我依然在这儿&lt;/p&gt;
+&lt;p&gt;静静的&lt;/p&gt;
+
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2012/01/15/2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5/#disqus_thread</comments>
+    </item>
+    
+  </channel>
+</rss>

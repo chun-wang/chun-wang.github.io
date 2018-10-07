@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[git-lfs]]></title>
+    <url>%2F2017%2F01%2F10%2F2017-01-10-git-lfs%2F</url>
+    <content type="text"><![CDATA[安装配置原理解析使用场景分析https://github.com/git-lfs/git-lfs/wiki/Tutorial lfs文件的迁移git lfs fetch –all to download all objects, then git lfs push –all to upload them somewhere else 工具脚本获取git仓库内大文件列表参考http://stackoverflow.com/questions/10622179/how-to-find-identify-large-files-commits-in-git-history 12345678910111213141516171819202122232425262728293031323334#!/bin/bash#set -x # Shows you the largest objects in your repo's pack file.# Written for osx.## @see https://stubbisms.wordpress.com/2009/07/10/git-script-to-show-largest-pack-objects-and-trim-your-waist-line/# @author Antony Stubbs# set the internal field spereator to line break, so that we can iterate easily over the verify-pack outputIFS=$'\n';# list all objects including their size, sort by size, take top 100objects=`git verify-pack -v .git/objects/pack/pack-*.idx | grep -v chain | sort -k3nr | head -n 100`echo "All sizes are in kB's. The pack column is the size of the object, compressed, inside the pack file."output="size,pack,SHA,location"allObjects=`git rev-list --all --objects`for y in $objectsdo # extract the size in bytes size=$((`echo $y | cut -f 5 -d ' '`/1024)) # extract the compressed size in bytes compressedSize=$((`echo $y | cut -f 6 -d ' '`/1024)) # extract the SHA sha=`echo $y | cut -f 1 -d ' '` # find the objects location in the repository tree other=`echo "$&#123;allObjects&#125;" | parallel "grep $sha"` #lineBreak=`echo -e "\n"` output="$&#123;output&#125;\n$&#123;size&#125;,$&#123;compressedSize&#125;,$&#123;other&#125;"doneecho -e $output | column -t -s ', ']]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[黑群晖配置]]></title>
+    <url>%2F2016%2F12%2F15%2F2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[引导下载[http://xpenology.me/downloads/](http://xpenology.me/downloads/) 修改vmware网卡为e1000ethernet0.virtualDev = &quot;e1000&quot; 配置硬盘为sata]]></content>
+      <categories>
+        <category>sample category</category>
+      </categories>
+      <tags>
+        <tag>Synology</tag>
+        <tag>Vmware</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JDK多版本快速切换]]></title>
+    <url>%2F2016%2F12%2F15%2F2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[export JAVA_7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home export JAVA_HOME=$JAVA_7_HOME alias jdk7=&apos;export JAVA_HOME=$JAVA_7_HOME&apos; alias jdk8=&apos;export JAVA_HOME=$JAVA_8_HOME&apos;]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Valgrind]]></title>
+    <url>%2F2016%2F12%2F15%2F2016-12-15-Valgrind%2F</url>
+    <content type="text"><![CDATA[使用-fstack-check后会导致valgrind的main线程栈无法扩展]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>memory</tag>
+        <tag>valgrind</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[maven配置parent pom查找策略]]></title>
+    <url>%2F2016%2F12%2F15%2F2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5%2F</url>
+    <content type="text"><![CDATA[当我们在pom.xml中添加parent pom的时候，通常maven会按照如下顺序查找: relativePath标签指向的路径。 默认的relativePath路径”../“。 本地maven仓库。 远程maven仓库。 注意事项: 通常我们在maven的setting.xml文件中，直接配置mirrors到指定的服务器就可以方便的进行开发了。但是如果我们要引用远程仓库中的包作为parent，则必须将该远程仓库通过profile方式添加进来，光使用mirrors映射到该仓库是无效的。]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C&C++内存检查]]></title>
+    <url>%2F2015%2F03%2F30%2F2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5%2F</url>
+    <content type="text"><![CDATA[Valgrind(memcheck)valgrind通过监控进程的所有内存申请、释放及内存边界，能够有效发现内存问题； 优点： 功能全面，内存泄露、读写越界；除了memcheck还包括多线程互斥等各种工具； 出错后记录日志，便于一次性做全量测试，之后再来分析日志； 缺点： 有一定的误报率（和检测算法有关） 因为是虚拟运行环境方式，资源消耗较大；对于大型软件可能会降低软件运行效率； ###Address sanitizer GCC4.8开始自带的内存检查工具，通过编译选项直接在编译阶段对所有内存操作代码增加检查； 优点： 准确率100%，只要是检查出来的一定是问题 缺点： 只能检查内存(动态内存+栈)越界读写，无法检查内存泄露； 检测到问题时直接报错退出，必须修复后才能继续运行；这点对大量测试用例的批量执行不太友好，不过正是其100%的正确率，所以原则就是“检测出的问题你没理由不去修复”,简单说就是逼着你去修复。]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>memory</tag>
+        <tag>valgrind</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[shell中的正则表达式]]></title>
+    <url>%2F2015%2F03%2F22%2F2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[使用方法很简单,例如要测试表达式中只含有数字: [[ &quot;1234&quot; =~ ^[0-9]*$ ]] 为了更加清晰的知道结果, 我们可以这样： [[ &quot;1234&quot; =~ ^[0-9]*$ ]] &amp;&amp; echo &quot;true&quot; 甚至这样: ([[ &quot;1234&quot; =~ ^[0-9]*$ ]] &amp;&amp; echo &quot;true&quot;)|| echo &quot;false&quot; 如果表达式成功则显示true,否则显示false]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>shell</tag>
+        <tag>regexp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[no title]]></title>
+    <url>%2F2015%2F01%2F18%2F2015-01-18-No-Title%2F</url>
+    <content type="text"><![CDATA[来时雨蒙蒙去时雨茫茫滴滴江南水脉脉故乡情此去 不知几时路漫漫 他乡何所依]]></content>
+      <categories>
+        <category>随感</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Ruby工具]]></title>
+    <url>%2F2015%2F01%2F14%2F2015-01-14-Ruby%E5%B7%A5%E5%85%B7%2F</url>
+    <content type="text"><![CDATA[RubyRuby语言解释、执行器 RVM用于帮你安装Ruby环境，帮你管理多个Ruby环境，帮你管理你开发的每个Ruby应用使用机器上哪个Ruby环境。Ruby环境不仅仅是Ruby本身，还包括依赖的第三方Ruby插件。都由RVM管理。 Rails基于RUBY语言的Web开发框架。详细 RubyGemsRuby程序包管理器（ package manager），类似RPM、yast。最新Ruby版本默认包含RubyGems了。 GemGem文件是封装起来的Ruby应用程序或代码库。注：在终端下使用的gem命令，是RubyGems的客户端，用于安装、管理Gem包。 Gemfile定义应用依赖哪些GEM包，bundle根据该配置去寻找、安装GEM包。 RakeRake是一门构建语言，和make类似。Rake是用Ruby写的，它支持自己的DSL用来处理和维护Ruby程序。 Rails用rake扩展来完成多种不容任务，如数据库初始化、更新等。详细 RakefileRakefile是由Ruby编写，Rake的命令执行就是由Rakefile文件定义。 In a gem’s context, the Rakefile is extremely useful. It can hold various tasks to help building, testing and debugging your gem, among all other things that you might find useful.详细 Bundle相当于多个RubyGems批处理运行。在配置文件gemfilel里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包。 Bundler maintains a consistent environment for ruby applications. It tracks an application’s code and the rubygems it needs to run, so that an application will always have the exact gems (and versions) that it needs to run. 参考： http://rake.rubyforge.org/ http://rake.rubyforge.org/files/doc/rakefile_rdoc.html http://yinghuayuan8866.blog.163.com/blog/static/2245702720122909571/ http://martinfowler.com/articles/rake.html]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Ruby</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux线程状态]]></title>
+    <url>%2F2014%2F12%2F09%2F2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%2F</url>
+    <content type="text"><![CDATA[Linux任务状态列表： D 不可中断 Uninterruptible sleep (usually IO) R 正在运行，或在队列中的进程 S 处于休眠状态 T 停止或被追踪 Z 僵尸进程 W 进入内存交换（从内核2.6开始无效） X 死掉的进程 &lt; 高优先级 N 低优先级 L 有些页被锁进内存 s 包含子进程 + 位于后台的进程组 l 多线程，克隆线程 常见问题： 1、任务一直处在D状态：内核提供了HungTask功能用于监控线程在D状态不退出，通常任务进入D状态主要是做IO也就是外部设备操作，问题可能在相关的驱动代码bug。]]></content>
+      <categories>
+        <category>OS</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Thread</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[景]]></title>
+    <url>%2F2012%2F01%2F15%2F2012-01-15-%E6%99%AF%2F</url>
+    <content type="text"><![CDATA[在渐渐散去的笑声、泪雨中，追忆着那春暖花开的日子。每一张笑脸，每一滴眼泪，每一刻即是永恒，却又似流星一闪即逝，岁月的长与短远不是时间所能衡量。在我还来不及把愿望许下，你已消失在天际。于是我怀揣着那早已支离破碎的的承诺（或许你知道，或许你早已不记得），行走在也已到来的夜幕中，追逐着落日，找寻着最后一缕霞光。沿着你留下的每一个脚印，走过你走过的路，苦过你的苦，微笑着你的微笑，追逐着你的追逐。 人们总说失去了才懂得珍惜，却不知是互相珍惜的时候，我们都未曾感受到，有些早已习以为常的东西，有一天会离去。。。夜的静容易使人产生遐想，心的寂静则让我懂得去感受。每个男人的心中都有一滴眼泪，不愿在别人面前哭泣，却又害怕你看到的时候会离开~又或是，当你离开的时候它才会落下。过分的寂静却又容易让人害怕，甚至恐慌。于是，周期性的，我在黑夜中迷失，在寂寞中慌乱，宛若溺水或跌落悬崖，拼命握住那每一颗够得着的树枝。于是，夜似乎并没有那没黑，大地也多了几分色彩。在平淡无奇的日子里，在草地上、树荫下，体会着每一个熟悉又陌生的瞬间。然而，每当夜幕到来的时候，总有那么一缕光出现在梦]]></content>
+      <categories>
+        <category>随感</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[一枝 一叶 一思念]]></title>
+    <url>%2F2012%2F01%2F15%2F2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5%2F</url>
+    <content type="text"><![CDATA[秋叶 绿竹 春去 冬来 我依然在这儿 静静的]]></content>
+      <categories>
+        <category>随感</category>
+      </categories>
+  </entry>
+</search>

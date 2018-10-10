@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[架构设计]]></title>
+    <url>%2F2018%2F10%2F10%2F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%2F</url>
+    <content type="text"><![CDATA[架构设计的时候需要分层次，一层层去思考完成相关设计。 比如： 0层：整体的部件组成及其相关关系 1层：业务流和关键接口 数据模型 2层：关键点的详细设计甚至实现方案 3层：资源/人力/成本/工作量等核算]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>架构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[git-lfs]]></title>
     <url>%2F2017%2F01%2F10%2F2017-01-10-git-lfs%2F</url>
     <content type="text"><![CDATA[安装配置原理解析使用场景分析https://github.com/git-lfs/git-lfs/wiki/Tutorial lfs文件的迁移git lfs fetch –all to download all objects, then git lfs push –all to upload them somewhere else 工具脚本获取git仓库内大文件列表参考http://stackoverflow.com/questions/10622179/how-to-find-identify-large-files-commits-in-git-history 12345678910111213141516171819202122232425262728293031323334#!/bin/bash#set -x # Shows you the largest objects in your repo's pack file.# Written for osx.## @see https://stubbisms.wordpress.com/2009/07/10/git-script-to-show-largest-pack-objects-and-trim-your-waist-line/# @author Antony Stubbs# set the internal field spereator to line break, so that we can iterate easily over the verify-pack outputIFS=$'\n';# list all objects including their size, sort by size, take top 100objects=`git verify-pack -v .git/objects/pack/pack-*.idx | grep -v chain | sort -k3nr | head -n 100`echo "All sizes are in kB's. The pack column is the size of the object, compressed, inside the pack file."output="size,pack,SHA,location"allObjects=`git rev-list --all --objects`for y in $objectsdo # extract the size in bytes size=$((`echo $y | cut -f 5 -d ' '`/1024)) # extract the compressed size in bytes compressedSize=$((`echo $y | cut -f 6 -d ' '`/1024)) # extract the SHA sha=`echo $y | cut -f 1 -d ' '` # find the objects location in the repository tree other=`echo "$&#123;allObjects&#125;" | parallel "grep $sha"` #lineBreak=`echo -e "\n"` output="$&#123;output&#125;\n$&#123;size&#125;,$&#123;compressedSize&#125;,$&#123;other&#125;"doneecho -e $output | column -t -s ', ']]></content>

@@ -8,8 +8,26 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Wed, 10 Oct 2018 15:03:29 GMT</pubDate>
+    <pubDate>Thu, 11 Oct 2018 14:33:55 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>jitsi架构</title>
+      <link>http://chun-wang.github.io/2018/10/11/jitsi%E6%9E%B6%E6%9E%84/</link>
+      <guid>http://chun-wang.github.io/2018/10/11/jitsi%E6%9E%B6%E6%9E%84/</guid>
+      <pubDate>Thu, 11 Oct 2018 14:12:07 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;常见的jitsi部署图：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2018/10/11/jitsi%E6%9E%B6%E6%9E%84/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>架构设计</title>

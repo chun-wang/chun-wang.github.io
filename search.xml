@@ -25,17 +25,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[git-lfs]]></title>
-    <url>%2F2017%2F01%2F10%2F2017-01-10-git-lfs%2F</url>
-    <content type="text"><![CDATA[安装配置原理解析使用场景分析https://github.com/git-lfs/git-lfs/wiki/Tutorial lfs文件的迁移git lfs fetch –all to download all objects, then git lfs push –all to upload them somewhere else 工具脚本获取git仓库内大文件列表参考http://stackoverflow.com/questions/10622179/how-to-find-identify-large-files-commits-in-git-history 12345678910111213141516171819202122232425262728293031323334#!/bin/bash#set -x # Shows you the largest objects in your repo's pack file.# Written for osx.## @see https://stubbisms.wordpress.com/2009/07/10/git-script-to-show-largest-pack-objects-and-trim-your-waist-line/# @author Antony Stubbs# set the internal field spereator to line break, so that we can iterate easily over the verify-pack outputIFS=$'\n';# list all objects including their size, sort by size, take top 100objects=`git verify-pack -v .git/objects/pack/pack-*.idx | grep -v chain | sort -k3nr | head -n 100`echo "All sizes are in kB's. The pack column is the size of the object, compressed, inside the pack file."output="size,pack,SHA,location"allObjects=`git rev-list --all --objects`for y in $objectsdo # extract the size in bytes size=$((`echo $y | cut -f 5 -d ' '`/1024)) # extract the compressed size in bytes compressedSize=$((`echo $y | cut -f 6 -d ' '`/1024)) # extract the SHA sha=`echo $y | cut -f 1 -d ' '` # find the objects location in the repository tree other=`echo "$&#123;allObjects&#125;" | parallel "grep $sha"` #lineBreak=`echo -e "\n"` output="$&#123;output&#125;\n$&#123;size&#125;,$&#123;compressedSize&#125;,$&#123;other&#125;"doneecho -e $output | column -t -s ', ']]></content>
-      <categories>
-        <category>Develop</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[黑群晖配置]]></title>
     <url>%2F2016%2F12%2F15%2F2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[引导下载[http://xpenology.me/downloads/](http://xpenology.me/downloads/) 修改vmware网卡为e1000ethernet0.virtualDev = &quot;e1000&quot; 配置硬盘为sata]]></content>
@@ -65,10 +54,13 @@
     <content type="text"><![CDATA[使用-fstack-check后会导致valgrind的main线程栈无法扩展]]></content>
       <categories>
         <category>Develop</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>memory</tag>
         <tag>valgrind</tag>
+        <tag>memory leak</tag>
+        <tag>memory damage</tag>
       </tags>
   </entry>
   <entry>

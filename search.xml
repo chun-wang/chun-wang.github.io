@@ -40,7 +40,7 @@
     <url>%2F2016%2F12%2F15%2F2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[引导下载[http://xpenology.me/downloads/](http://xpenology.me/downloads/) 修改vmware网卡为e1000ethernet0.virtualDev = &quot;e1000&quot; 配置硬盘为sata]]></content>
       <categories>
-        <category>sample category</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>Synology</tag>

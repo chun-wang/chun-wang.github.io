@@ -64,6 +64,7 @@
     <url>%2F2016%2F12%2F15%2F2016-12-15-Valgrind%2F</url>
     <content type="text"><![CDATA[使用-fstack-check后会导致valgrind的main线程栈无法扩展]]></content>
       <categories>
+        <category>Develop</category>
         <category>工具</category>
       </categories>
       <tags>

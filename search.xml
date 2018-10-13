@@ -2,8 +2,8 @@
 <search>
   <entry>
     <title><![CDATA[Jitsi架构]]></title>
-    <url>%2F2018%2F10%2F11%2FJitsi%E6%9E%B6%E6%9E%84%2F</url>
-    <content type="text"><![CDATA[主要服务Nginx： 作为jitsi-meet的静态资源服务器 作为后台服务器的反向代理 Jitsi-meet： jitsi的web客户端，浏览器访问时会从服务器端拉取jitsi-meet静态资源文件，在浏览器内加载为客户端。 Prosody/xmpp： xmpp服务器端 Jitsi-jicofo： jitsi服务端的会议/房间管理部件 Jitsi-videobridge： 核心的SFU部件，完成媒体数据流的管理和重定向 其他扩展服务Jigasi： SIP网关，实现和其他SIP服务器的对接，支持： 基于SIP协议的对接：支持单账户的呼出和呼入 作为转换器（Transcription）实现音频到文本的转换，需要Google Cloud speech-to-text API的支持]]></content>
+    <url>%2F2018%2F10%2F11%2F2018-10-11-Jitsi%E6%9E%B6%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[常见的Jitsi部署图12345678910111213141516171819202122 + + | | | | v | 443 | +-------+ | | | | | NginX | | | | | +--+-+--+ | | | |+------------+ | | +--------------+ || | | | | | || jitsi-meet +&lt;---+ +---&gt;+ prosody/xmpp | || |files 5280 | | |+------------+ +--------------+ v 5222,5347^ ^5347 4443 tcp/10000 udp +--------+ | | +-------------+ | | | | | | | jicofo +----^ ^----+ videobridge | | | | | +--------+ +-------------+ 主要服务Nginx： 作为jitsi-meet的静态资源服务器 作为后台服务器的反向代理 Jitsi-meet： jitsi的web客户端，浏览器访问时会从服务器端拉取jitsi-meet静态资源文件，在浏览器内加载为客户端。 Prosody/xmpp： xmpp服务器端 Jitsi-jicofo： jitsi服务端的会议/房间管理部件 Jitsi-videobridge： 核心的SFU部件，完成媒体数据流的管理和重定向 其他扩展服务Jigasi： SIP网关，实现和其他SIP服务器的对接，支持： 基于SIP协议的对接：支持单账户的呼出和呼入 作为转换器（Transcription）实现音频到文本的转换，需要Google Cloud speech-to-text API的支持]]></content>
       <categories>
         <category>Develop</category>
       </categories>
@@ -15,7 +15,7 @@
   </entry>
   <entry>
     <title><![CDATA[架构设计]]></title>
-    <url>%2F2018%2F10%2F10%2F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%2F</url>
+    <url>%2F2018%2F10%2F10%2F2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%2F</url>
     <content type="text"><![CDATA[架构设计的时候需要分层次，一层层去思考完成相关设计。 比如： 0层：整体的部件组成及其相关关系 1层：业务流和关键接口 数据模型 2层：关键点的详细设计甚至实现方案 3层：资源/人力/成本/工作量等核算 每一层都有每一层的职责和范围，往往是由大至小，由宽入细。 架构就好比金字塔，各层次之间是环环相扣，1层的分析取决于0层的设计。 混乱的设计往往容易出现架构层次不匹配的问题，比如分析1层时突然觉得0层的部分结论有问题，就又用新的方式去做了1层的分析。这里面有两个问题： 层次间出现偏差，就好比一栋房子并不是垂直建的，而是层次不齐，这样必然无法牢固。 没有在应有的层次解决问题，根基不稳固必然不可靠。 此时正确的方法应该是回去重新讨论0层对应部分的问题，确定后才继续分析1层的方案。即每一层只讨论每一层次的问题，如果对任何一个层次有疑问则在对应层次上重新分析，在该层次的方案间重新对比。方案上的问题“反复”往往就是因为没有在该有的层次上先讨论清楚“根基”问题，导致方案上的争论无休止。]]></content>
       <categories>
         <category>Develop</category>

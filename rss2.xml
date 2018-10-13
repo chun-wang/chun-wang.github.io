@@ -8,32 +8,30 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Sat, 13 Oct 2018 14:06:04 GMT</pubDate>
+    <pubDate>Sat, 13 Oct 2018 14:07:20 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
       <title>Jitsi架构</title>
-      <link>http://chun-wang.github.io/2018/10/11/Jitsi%E6%9E%B6%E6%9E%84/</link>
-      <guid>http://chun-wang.github.io/2018/10/11/Jitsi%E6%9E%B6%E6%9E%84/</guid>
+      <link>http://chun-wang.github.io/2018/10/11/2018-10-11-Jitsi%E6%9E%B6%E6%9E%84/</link>
+      <guid>http://chun-wang.github.io/2018/10/11/2018-10-11-Jitsi%E6%9E%B6%E6%9E%84/</guid>
       <pubDate>Thu, 11 Oct 2018 14:12:07 GMT</pubDate>
       <description>
       
         
         
-          &lt;h3 id=&quot;主要服务&quot;&gt;&lt;a href=&quot;#主要服务&quot; class=&quot;headerlink&quot; title=&quot;主要服务&quot;&gt;&lt;/a&gt;主要服务&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Nginx&lt;/strong&gt;：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;作为jitsi-meet的静态资源服务器&lt;/li&gt;
+          &lt;h3 id=&quot;常见的Jitsi部署图&quot;&gt;&lt;a href=&quot;#常见的Jitsi部署图&quot; class=&quot;headerlink&quot; title=&quot;常见的Jitsi部署图&quot;&gt;&lt;/a&gt;常见的Jitsi部署图&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;tabl
         
       
       </description>
       
-      <comments>http://chun-wang.github.io/2018/10/11/Jitsi%E6%9E%B6%E6%9E%84/#disqus_thread</comments>
+      <comments>http://chun-wang.github.io/2018/10/11/2018-10-11-Jitsi%E6%9E%B6%E6%9E%84/#disqus_thread</comments>
     </item>
     
     <item>
       <title>架构设计</title>
-      <link>http://chun-wang.github.io/2018/10/10/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
-      <guid>http://chun-wang.github.io/2018/10/10/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
+      <link>http://chun-wang.github.io/2018/10/10/2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
+      <guid>http://chun-wang.github.io/2018/10/10/2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
       <pubDate>Wed, 10 Oct 2018 14:33:46 GMT</pubDate>
       <description>
       
@@ -49,7 +47,7 @@
       
       </description>
       
-      <comments>http://chun-wang.github.io/2018/10/10/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/#disqus_thread</comments>
+      <comments>http://chun-wang.github.io/2018/10/10/2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/#disqus_thread</comments>
     </item>
     
     <item>

@@ -8,8 +8,25 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Sat, 13 Oct 2018 14:07:20 GMT</pubDate>
+    <pubDate>Mon, 22 Oct 2018 14:26:01 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Jitsi安装部署</title>
+      <link>http://chun-wang.github.io/2018/10/22/2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
+      <guid>http://chun-wang.github.io/2018/10/22/2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
+      <pubDate>Mon, 22 Oct 2018 14:12:07 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h4 id=&quot;官方部署指导&quot;&gt;&lt;a href=&quot;#官方部署指导&quot; class=&quot;headerlink&quot; title=&quot;官方部署指导&quot;&gt;&lt;/a&gt;官方部署指导&lt;/h4&gt;&lt;p&gt;自动化一键部署： &lt;a href=&quot;https://github.com/jitsi/jitsi-meet/
+        
+      
+      </description>
+      
+      <comments>http://chun-wang.github.io/2018/10/22/2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Jitsi架构</title>

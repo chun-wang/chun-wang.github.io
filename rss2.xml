@@ -3,12 +3,12 @@
   xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>The Sea</title>
+    <title>Spring Favor</title>
     <link>http://chun-wang.github.io/</link>
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Mon, 22 Oct 2018 14:26:01 GMT</pubDate>
+    <pubDate>Fri, 09 Nov 2018 14:10:56 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>

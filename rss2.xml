@@ -4,7 +4,7 @@
   xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Spring Favor</title>
-    <link>https://blog.springfavor.cn/</link>
+    <link>https://chun-wang.github.io/</link>
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
@@ -13,8 +13,8 @@
     
     <item>
       <title>Jitsi安装部署</title>
-      <link>https://blog.springfavor.cn/2018/10/22/2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
-      <guid>https://blog.springfavor.cn/2018/10/22/2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
+      <link>https://chun-wang.github.io/2018/10/22/2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
+      <guid>https://chun-wang.github.io/2018/10/22/2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
       <pubDate>Mon, 22 Oct 2018 14:12:07 GMT</pubDate>
       <description>
       
@@ -25,13 +25,13 @@
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2018/10/22/2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2018/10/22/2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/#disqus_thread</comments>
     </item>
     
     <item>
       <title>Jitsi架构</title>
-      <link>https://blog.springfavor.cn/2018/10/11/2018-10-11-Jitsi%E6%9E%B6%E6%9E%84/</link>
-      <guid>https://blog.springfavor.cn/2018/10/11/2018-10-11-Jitsi%E6%9E%B6%E6%9E%84/</guid>
+      <link>https://chun-wang.github.io/2018/10/11/2018-10-11-Jitsi%E6%9E%B6%E6%9E%84/</link>
+      <guid>https://chun-wang.github.io/2018/10/11/2018-10-11-Jitsi%E6%9E%B6%E6%9E%84/</guid>
       <pubDate>Thu, 11 Oct 2018 14:12:07 GMT</pubDate>
       <description>
       
@@ -42,13 +42,13 @@
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2018/10/11/2018-10-11-Jitsi%E6%9E%B6%E6%9E%84/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2018/10/11/2018-10-11-Jitsi%E6%9E%B6%E6%9E%84/#disqus_thread</comments>
     </item>
     
     <item>
       <title>架构设计</title>
-      <link>https://blog.springfavor.cn/2018/10/10/2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
-      <guid>https://blog.springfavor.cn/2018/10/10/2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
+      <link>https://chun-wang.github.io/2018/10/10/2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
+      <guid>https://chun-wang.github.io/2018/10/10/2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
       <pubDate>Wed, 10 Oct 2018 14:33:46 GMT</pubDate>
       <description>
       
@@ -64,13 +64,13 @@
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2018/10/10/2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2018/10/10/2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/#disqus_thread</comments>
     </item>
     
     <item>
       <title>Git-Lfs</title>
-      <link>https://blog.springfavor.cn/2017/01/10/2017-01-10-Git-Lfs/</link>
-      <guid>https://blog.springfavor.cn/2017/01/10/2017-01-10-Git-Lfs/</guid>
+      <link>https://chun-wang.github.io/2017/01/10/2017-01-10-Git-Lfs/</link>
+      <guid>https://chun-wang.github.io/2017/01/10/2017-01-10-Git-Lfs/</guid>
       <pubDate>Tue, 10 Jan 2017 03:51:52 GMT</pubDate>
       <description>
       
@@ -81,13 +81,13 @@
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2017/01/10/2017-01-10-Git-Lfs/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2017/01/10/2017-01-10-Git-Lfs/#disqus_thread</comments>
     </item>
     
     <item>
       <title>黑群晖配置</title>
-      <link>https://blog.springfavor.cn/2016/12/15/2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/</link>
-      <guid>https://blog.springfavor.cn/2016/12/15/2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/</guid>
+      <link>https://chun-wang.github.io/2016/12/15/2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/</link>
+      <guid>https://chun-wang.github.io/2016/12/15/2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/</guid>
       <pubDate>Thu, 15 Dec 2016 15:25:07 GMT</pubDate>
       <description>
       
@@ -98,13 +98,13 @@
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2016/12/15/2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2016/12/15/2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/#disqus_thread</comments>
     </item>
     
     <item>
       <title>JDK多版本快速切换</title>
-      <link>https://blog.springfavor.cn/2016/12/15/2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/</link>
-      <guid>https://blog.springfavor.cn/2016/12/15/2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/</guid>
+      <link>https://chun-wang.github.io/2016/12/15/2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/</link>
+      <guid>https://chun-wang.github.io/2016/12/15/2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/</guid>
       <pubDate>Thu, 15 Dec 2016 15:23:54 GMT</pubDate>
       <description>
       
@@ -116,13 +116,13 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2016/12/15/2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2016/12/15/2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/#disqus_thread</comments>
     </item>
     
     <item>
       <title>Valgrind</title>
-      <link>https://blog.springfavor.cn/2016/12/15/2016-12-15-Valgrind/</link>
-      <guid>https://blog.springfavor.cn/2016/12/15/2016-12-15-Valgrind/</guid>
+      <link>https://chun-wang.github.io/2016/12/15/2016-12-15-Valgrind/</link>
+      <guid>https://chun-wang.github.io/2016/12/15/2016-12-15-Valgrind/</guid>
       <pubDate>Thu, 15 Dec 2016 15:22:06 GMT</pubDate>
       <description>
       
@@ -136,13 +136,13 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2016/12/15/2016-12-15-Valgrind/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2016/12/15/2016-12-15-Valgrind/#disqus_thread</comments>
     </item>
     
     <item>
       <title>maven配置parent pom查找策略</title>
-      <link>https://blog.springfavor.cn/2016/12/15/2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/</link>
-      <guid>https://blog.springfavor.cn/2016/12/15/2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/</guid>
+      <link>https://chun-wang.github.io/2016/12/15/2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/</link>
+      <guid>https://chun-wang.github.io/2016/12/15/2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/</guid>
       <pubDate>Thu, 15 Dec 2016 15:00:41 GMT</pubDate>
       <description>
       
@@ -157,13 +157,13 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2016/12/15/2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2016/12/15/2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/#disqus_thread</comments>
     </item>
     
     <item>
       <title>C&amp;C++内存检查</title>
-      <link>https://blog.springfavor.cn/2015/03/30/2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/</link>
-      <guid>https://blog.springfavor.cn/2015/03/30/2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/</guid>
+      <link>https://chun-wang.github.io/2015/03/30/2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/</link>
+      <guid>https://chun-wang.github.io/2015/03/30/2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/</guid>
       <pubDate>Mon, 30 Mar 2015 14:51:52 GMT</pubDate>
       <description>
       
@@ -174,13 +174,13 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2015/03/30/2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2015/03/30/2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/#disqus_thread</comments>
     </item>
     
     <item>
       <title>shell中的正则表达式</title>
-      <link>https://blog.springfavor.cn/2015/03/22/2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
-      <guid>https://blog.springfavor.cn/2015/03/22/2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <link>https://chun-wang.github.io/2015/03/22/2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <guid>https://chun-wang.github.io/2015/03/22/2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
       <pubDate>Sun, 22 Mar 2015 09:53:57 GMT</pubDate>
       <description>
       
@@ -194,13 +194,13 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2015/03/22/2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2015/03/22/2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#disqus_thread</comments>
     </item>
     
     <item>
       <title>no title</title>
-      <link>https://blog.springfavor.cn/2015/01/18/2015-01-18-No-Title/</link>
-      <guid>https://blog.springfavor.cn/2015/01/18/2015-01-18-No-Title/</guid>
+      <link>https://chun-wang.github.io/2015/01/18/2015-01-18-No-Title/</link>
+      <guid>https://chun-wang.github.io/2015/01/18/2015-01-18-No-Title/</guid>
       <pubDate>Sun, 18 Jan 2015 14:03:29 GMT</pubDate>
       <description>
       
@@ -212,13 +212,13 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2015/01/18/2015-01-18-No-Title/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2015/01/18/2015-01-18-No-Title/#disqus_thread</comments>
     </item>
     
     <item>
       <title>Ruby工具</title>
-      <link>https://blog.springfavor.cn/2015/01/14/2015-01-14-Ruby%E5%B7%A5%E5%85%B7/</link>
-      <guid>https://blog.springfavor.cn/2015/01/14/2015-01-14-Ruby%E5%B7%A5%E5%85%B7/</guid>
+      <link>https://chun-wang.github.io/2015/01/14/2015-01-14-Ruby%E5%B7%A5%E5%85%B7/</link>
+      <guid>https://chun-wang.github.io/2015/01/14/2015-01-14-Ruby%E5%B7%A5%E5%85%B7/</guid>
       <pubDate>Wed, 14 Jan 2015 07:54:29 GMT</pubDate>
       <description>
       
@@ -230,13 +230,13 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2015/01/14/2015-01-14-Ruby%E5%B7%A5%E5%85%B7/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2015/01/14/2015-01-14-Ruby%E5%B7%A5%E5%85%B7/#disqus_thread</comments>
     </item>
     
     <item>
       <title>Linux线程状态</title>
-      <link>https://blog.springfavor.cn/2014/12/09/2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</link>
-      <guid>https://blog.springfavor.cn/2014/12/09/2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</guid>
+      <link>https://chun-wang.github.io/2014/12/09/2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</link>
+      <guid>https://chun-wang.github.io/2014/12/09/2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</guid>
       <pubDate>Tue, 09 Dec 2014 07:54:29 GMT</pubDate>
       <description>
       
@@ -253,13 +253,13 @@ W    进入内存交换
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2014/12/09/2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2014/12/09/2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/#disqus_thread</comments>
     </item>
     
     <item>
       <title>景</title>
-      <link>https://blog.springfavor.cn/2012/01/15/2012-01-15-%E6%99%AF/</link>
-      <guid>https://blog.springfavor.cn/2012/01/15/2012-01-15-%E6%99%AF/</guid>
+      <link>https://chun-wang.github.io/2012/01/15/2012-01-15-%E6%99%AF/</link>
+      <guid>https://chun-wang.github.io/2012/01/15/2012-01-15-%E6%99%AF/</guid>
       <pubDate>Sat, 14 Jan 2012 19:03:29 GMT</pubDate>
       <description>
       
@@ -270,13 +270,13 @@ W    进入内存交换
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2012/01/15/2012-01-15-%E6%99%AF/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2012/01/15/2012-01-15-%E6%99%AF/#disqus_thread</comments>
     </item>
     
     <item>
       <title>一枝 一叶 一思念</title>
-      <link>https://blog.springfavor.cn/2012/01/15/2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5/</link>
-      <guid>https://blog.springfavor.cn/2012/01/15/2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5/</guid>
+      <link>https://chun-wang.github.io/2012/01/15/2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5/</link>
+      <guid>https://chun-wang.github.io/2012/01/15/2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5/</guid>
       <pubDate>Sat, 14 Jan 2012 18:03:29 GMT</pubDate>
       <description>
       
@@ -291,7 +291,7 @@ W    进入内存交换
       
       </description>
       
-      <comments>https://blog.springfavor.cn/2012/01/15/2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5/#disqus_thread</comments>
+      <comments>https://chun-wang.github.io/2012/01/15/2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5/#disqus_thread</comments>
     </item>
     
   </channel>

@@ -89,6 +89,25 @@
     </item>
     
     <item>
+      <title>committer机制</title>
+      <link>https://blog.springfavor.cn/2018/03/03/2018-03-03-committer%E6%9C%BA%E5%88%B6/</link>
+      <guid>https://blog.springfavor.cn/2018/03/03/2018-03-03-committer%E6%9C%BA%E5%88%B6/</guid>
+      <pubDate>Sat, 03 Mar 2018 10:25:46 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;committer应该回归到研发的本质上来&lt;/p&gt;
+&lt;p&gt;committer应该是导师：&lt;/p&gt;
+&lt;p&gt;检视审核代码的过程其实是最好的人员培养过程。很多经验告诉我们 任何形式的培训、学习都不如实践来的快而有效，然而实践很多时候确是可遇不可求的（还记得别人问你今年又写了多少代
+        
+      
+      </description>
+      
+      <comments>https://blog.springfavor.cn/2018/03/03/2018-03-03-committer%E6%9C%BA%E5%88%B6/#disqus_thread</comments>
+    </item>
+    
+    <item>
       <title>Git-Lfs</title>
       <link>https://blog.springfavor.cn/2017/01/10/2017-01-10-Git-Lfs/</link>
       <guid>https://blog.springfavor.cn/2017/01/10/2017-01-10-Git-Lfs/</guid>

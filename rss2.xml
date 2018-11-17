@@ -8,8 +8,29 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Fri, 16 Nov 2018 15:25:32 GMT</pubDate>
+    <pubDate>Sat, 17 Nov 2018 09:55:06 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>工程驱动的软件开发</title>
+      <link>https://blog.springfavor.cn/2018/11/17/2018-11-17-%E5%B7%A5%E7%A8%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/</link>
+      <guid>https://blog.springfavor.cn/2018/11/17/2018-11-17-%E5%B7%A5%E7%A8%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/</guid>
+      <pubDate>Sat, 17 Nov 2018 09:53:23 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;好的工程要能够反向推动架构的改进&lt;/p&gt;
+&lt;p&gt;目录结构和软件架构&lt;/p&gt;
+&lt;p&gt;以流程、CI、测试网来保证代码质量，软件人员聚焦自己的工作&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;开发人员可根据需要“任意”修改代码（可能是bugfix，可能是需求，也可能是认为代码不好或有更好的实现方式
+        
+      
+      </description>
+      
+      <comments>https://blog.springfavor.cn/2018/11/17/2018-11-17-%E5%B7%A5%E7%A8%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Jitsi安装部署</title>

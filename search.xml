@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Jitsi安装部署]]></title>
+    <url>%2F2018%2F10%2F22%2F2018-10-22-Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%2F</url>
+    <content type="text"><![CDATA[官方部署指导自动化一键部署： https://github.com/jitsi/jitsi-meet/blob/master/doc/quick-install.md 自定义手工部署：https://github.com/jitsi/jitsi-meet/blob/master/doc/manual-install.md 完整的Jitsi部署图12345678910111213141516171819202122 + + | | | | v | 443 | +-------+ | | | | | NginX | | | | | +--+-+--+ | | | |+------------+ | | +--------------+ || | | | | | || jitsi-meet +&lt;---+ +---&gt;+ prosody/xmpp | || |files 5280 | | |+------------+ +--------------+ v 5222,5347^ ^5347 4443 tcp/10000 udp +--------+ | | +-------------+ | | | | | | | jicofo +----^ ^----+ videobridge | | | | | +--------+ +-------------+ 准备工作 一台云虚拟机，配置要求至少“2u4g，5Mbps公网带宽”，系统为ubuntu(建议16.10, 低版本需要额外配置openjdk) 一个可用的域名，以下步骤均以“hi-jitsi.cn”为例，需要绑定到上述虚拟机(此步骤参考云服务商配置文档) 步骤一：软件源地址配置1 配置jitsi官方源地址 12echo 'deb https://download.jitsi.org stable/' &gt;&gt; /etc/apt/sources.list.d/jitsi-stable.listwget -qO - https://download.jitsi.org/jitsi-key.gpg.key | apt-key add - 2 配置openjdk源地址(系统为ubuntu 14.04版本时需要) 1add-apt-reposotory ppa:openjdk-r/ppa 3 更新软件源缓存 1apt-get update 步骤二：安装配置Nginx安装: 1apt-get -y install nginx 配置: 1 新增nginx配置文件 12touch /etc/nginx/sites-available/hi-jitsi.cnln -s /etc/nginx/sites-enabled/hi-jitsi.cn 2 修改nginx主配置文件/etc/nginx/nginx.conf，包含新增的配置 12# 去除行首的注释标记include /etc/nginx/sites-enabled/*; 3 参考如下文件配置，将其中的网址”jitsi-meet.example.com”均替换为自己准备的域名”hi-jitsi.cn” ​ https://github.com/jitsi/jitsi-meet/blob/master/doc/debian/jitsi-meet/jitsi-meet.example 注意，如果使用自动化安装，必须在安装jitsi-meet之前安装nginx。否则自动化脚本未检测到nginx时会将自己配置为使用自带的jetty作web容器的运行模式，不利于后续的部署。 步骤三：安装jitsi-meet1apt-get -y install jitsi-meet 1 安装过程中会弹出两次配置输入窗口： a. 要求配置hostname：此处填写前面已经准备好的域名，比如“hi-jitsi.cn” b. 询问是否自动创建证书：此处按默认回车生成即可，后面会通过脚本重新替换掉证书 2 重启下xmpp服务器 service prosody restart 步骤四：创建公网证书上述安装步骤默认生成的证书在公网上访问是不可信的，jitsi的app也会因此无法成功连上我们自己部署的服务器。按照如下步骤可以从“letsencrypt”临时申请到一套可信的公网证书： 1 停止nginx服务(后续申请步骤需要使用到80端口) 1service nginx stop 2 执行脚本申请公网证书 1/usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh 生成的证书位置：/etc/letsencrypt/live/hi-jitsi.cn/ 3 检查nginx的证书配置 查看nginx配置文件（/etc/nginx/sites-enabled/hi-jitsi.cn）内的证书路径是否正确，如果不对则手工修改为如下配置 12ssl_certificate /etc/letsencrypt/live/hi-jitsi.cn/fullchain.pem;ssl_certificate_key /etc/letsencrypt/live/hi-jitsi.cn/privkey.pem; 4 启动nginx服务 1service nginx start 5 证书自动更新配置 从letsencrypt申请的证书默认有效期是90天，修改或新增脚本/etc/cron.weekly/letsencrypt-renew，以便自动更新申请新的证书，脚本内容如下： 12#!/bin/bash/usr/local/sbin/certbot-auto renew --webroot -w /usr/share/jitsi-meet &gt;&gt; /var/log/le-renew.log 可以通过如下命令能否执行成功测试证书更新功能是否生效： 1certbot-auto renew --dry-run --webroot -w /usr/share/jitsi-meet 步骤五：配置ICE NAT穿透在公有云上部署时，虚拟机的内外部网络是有NAT隔离的，需要按照如下步骤配置jitsi-videobridge才能正常进行视频流传输: 在配置文件/etc/jitsi/videobridge/sip-communicator.properties中增加如下配置: 12org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS=&lt;Local.IP.Address&gt;org.ice4j.ice.harvest.NAT_HARVESTER_PUBLIC_ADDRESS=&lt;Public.IP.Address&gt; 其中&lt;Local.IP.Address&gt;为虚拟机内网本机IP地址，&lt;Public.IP.Address&gt;为公有云分配的公网IP地址。配置完成后需要重启下jitsi-videobridge: 1service jitsi-videobridge restart 步骤六：配置STUN服务器在P2P场景下，需要配置STUN服务器以便实现客户端的NAT穿越、直连。默认jitsi-meet使用的STUN服务器是google的，在国内使用时经常遇到连接问题，需要修改配置文件/etc/jitsi/meet/hi-jitsi.cn-config.js，找到stunServers配置项，在前面新增如下两个服务器配置： 12&#123; urls: 'stun:stun.freeswitch.org' &#125;,&#123; urls: 'stun:stun.ideasip.com' &#125;, 修改后的配置: 12345678// The STUN servers that will be used in the peer to peer connectionsstunServers: [ &#123; urls: 'stun:stun.freeswitch.org' &#125;, &#123; urls: 'stun:stun.ideasip.com' &#125;, &#123; urls: 'stun:stun.l.google.com:19302' &#125;, &#123; urls: 'stun:stun1.l.google.com:19302' &#125;, &#123; urls: 'stun:stun2.l.google.com:19302' &#125;], 说明：实际生产、发布环境需要独立部署stun/turn服务器以便实现P2P穿透或转发。 附: WebRTC的P2P连接过程: 尝试直连. 直连失败则通过stun服务器进行穿透后直连. 无法穿透则通过turn服务器中转视频流.（需要消耗较多服务器端资源） 步骤七：配置公有云端口映射策略由于安全原因，公有云默认是限制了端口访问的。为了能够正确在公有云上使用jitsi进行视频传输，至少需要开启如下端口的访问权限： 类型 协议 端口/范围 描述 IPv4 TCP 443 HTTPS默认端口: 1. jitsi-meet页面资源加载 2. xmpp服务的BOSH接入 IPv4 UDP 10000-20000 RTP/RTCP连接：WebRTC客户端和服务端SFU(jitsi-videobridge)之间的视频流传输 IPv4 TCP 4443 UDP不可用时jitsi-videobridge的备用接入端口 以华为云为例，进入“控制台”-&gt;”服务列表”-&gt;”弹性公网IP”-&gt;”安全组”，选择部署用的虚拟机已绑定的安全组策略，按照如下示例图配置端口： 基本功能验证至少需要验证如下两种场景下的视频传输功能： 验证两客户端接入时p2p功能。 验证三个及以上客户端接入时jitsi-videobridge视频分发功能。 使用chrome浏览器或APP打开地址”https://hi-jitsi.cn&quot;，填写房间号即可接入对应的视频聊天。分别使用不同数量的客户端接入同一个房间，以便验证上述场景下协议是否都已经正确配通。 成功安装后的环境说明 配置文件路径 一般安装上述步骤安装后的环境即是可用的；如需要自己修改或定制配置，可在如下路径找到相关部件的配置文件 1234jicofo：/etc/jitsi/jicofojitsi-videobridge: /etc/jitsi/videobridgejitsi-meet: /etc/jitsi/meetxmpp: /etc/prosody/ 日志文件路径 部署的环境在使用过程中有任何功能性的问题，可以查看如下日志进行定位: 123Jitsi-videobridge：/var/log/jitsi/jvb.logJicofo: /var/log/jitsi/jicofo.logxmpp服务: /var/log/prosody/prosody.err、/var/log/prosody/prosody.log 卸载重装如果需要重装jitsi以便重新配置或恢复环境，可以执行如下命令进行卸载 1apt-get purge jigasi jitsi-meet jitsi-meet-web-config jitsi-meet-prosody jitsi-meet-web jicofo jitsi-videobridge 备注：卸载过程中如果遇到错误，只需要等待几秒后重新执行上述命令，直到没有错误即可。 FAQ: 两个客户端接入时正常，三个人接入时无视频流 上述问题往往是jitsi-videobridge客户端配置错误导致: 原因是双方接入时默认走的P2P，不经过videobridge部件。而三个或更多人接入时必须走videobridge进行视频分发。 错误配置1： 未按上述步骤五正确配置ICE NAT穿透，导致客户端无法连接到videobridge。建议检查/etc/jitsi/videobridge/sip-communicator.properties是否配置正确 错误配置2： 操作系统未正确配置hosts，此问题较为隐蔽，会导致videobridge功能不可用。建议检查/etc/hosts文件内是否有本机IP地址对应的配置，如果没有则自己添加下]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Jitsi</tag>
+        <tag>SFU</tag>
+        <tag>WebRTC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Jitsi架构]]></title>
+    <url>%2F2018%2F10%2F11%2F2018-10-11-Jitsi%E6%9E%B6%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[常见的Jitsi部署图12345678910111213141516171819202122 + + | | | | v | 443 | +-------+ | | | | | NginX | | | | | +--+-+--+ | | | |+------------+ | | +--------------+ || | | | | | || jitsi-meet +&lt;---+ +---&gt;+ prosody/xmpp | || |files 5280 | | |+------------+ +--------------+ v 5222,5347^ ^5347 4443 tcp/10000 udp +--------+ | | +-------------+ | | | | | | | jicofo +----^ ^----+ videobridge | | | | | +--------+ +-------------+ 主要服务Nginx： 作为jitsi-meet的静态资源服务器 作为后台服务器的反向代理 Jitsi-meet： jitsi的web客户端，浏览器访问时会从服务器端拉取jitsi-meet静态资源文件，在浏览器内加载为客户端。 Prosody/xmpp： xmpp服务器端 Jitsi-jicofo： jitsi服务端的会议/房间管理部件 Jitsi-videobridge： 核心的SFU部件，完成媒体数据流的管理和重定向 其他扩展服务Jigasi： SIP网关，实现和其他SIP服务器的对接，支持： 基于SIP协议的对接：支持单账户的呼出和呼入 作为转换器（Transcription）实现音频到文本的转换，需要Google Cloud speech-to-text API的支持]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Jitsi</tag>
+        <tag>SFU</tag>
+        <tag>WebRTC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[架构设计]]></title>
+    <url>%2F2018%2F10%2F10%2F2018-10-10-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%2F</url>
+    <content type="text"><![CDATA[架构设计的时候需要分层次，一层层去思考完成相关设计。 比如： 0层：整体的部件组成及其相关关系 1层：业务流和关键接口 数据模型 2层：关键点的详细设计甚至实现方案 3层：资源/人力/成本/工作量等核算 每一层都有每一层的职责和范围，往往是由大至小，由宽入细。 架构就好比金字塔，各层次之间是环环相扣，1层的分析取决于0层的设计。 混乱的设计往往容易出现架构层次不匹配的问题，比如分析1层时突然觉得0层的部分结论有问题，就又用新的方式去做了1层的分析。这里面有两个问题： 层次间出现偏差，就好比一栋房子并不是垂直建的，而是层次不齐，这样必然无法牢固。 没有在应有的层次解决问题，根基不稳固必然不可靠。 此时正确的方法应该是回去重新讨论0层对应部分的问题，确定后才继续分析1层的方案。即每一层只讨论每一层次的问题，如果对任何一个层次有疑问则在对应层次上重新分析，在该层次的方案间重新对比。方案上的问题“反复”往往就是因为没有在该有的层次上先讨论清楚“根基”问题，导致方案上的争论无休止。]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>架构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git-Lfs]]></title>
+    <url>%2F2017%2F01%2F10%2F2017-01-10-Git-Lfs%2F</url>
+    <content type="text"><![CDATA[安装配置原理解析使用场景分析https://github.com/git-lfs/git-lfs/wiki/Tutorial lfs文件的迁移git lfs fetch –all to download all objects, then git lfs push –all to upload them somewhere else 工具脚本获取git仓库内大文件列表参考http://stackoverflow.com/questions/10622179/how-to-find-identify-large-files-commits-in-git-history 12345678910111213141516171819202122232425262728293031323334#!/bin/bash#set -x # Shows you the largest objects in your repo's pack file.# Written for osx.## @see https://stubbisms.wordpress.com/2009/07/10/git-script-to-show-largest-pack-objects-and-trim-your-waist-line/# @author Antony Stubbs# set the internal field spereator to line break, so that we can iterate easily over the verify-pack outputIFS=$'\n';# list all objects including their size, sort by size, take top 100objects=`git verify-pack -v .git/objects/pack/pack-*.idx | grep -v chain | sort -k3nr | head -n 100`echo "All sizes are in kB's. The pack column is the size of the object, compressed, inside the pack file."output="size,pack,SHA,location"allObjects=`git rev-list --all --objects`for y in $objectsdo # extract the size in bytes size=$((`echo $y | cut -f 5 -d ' '`/1024)) # extract the compressed size in bytes compressedSize=$((`echo $y | cut -f 6 -d ' '`/1024)) # extract the SHA sha=`echo $y | cut -f 1 -d ' '` # find the objects location in the repository tree other=`echo "$&#123;allObjects&#125;" | parallel "grep $sha"` #lineBreak=`echo -e "\n"` output="$&#123;output&#125;\n$&#123;size&#125;,$&#123;compressedSize&#125;,$&#123;other&#125;"doneecho -e $output | column -t -s ', ']]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[黑群晖配置]]></title>
+    <url>%2F2016%2F12%2F15%2F2016-12-15-%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[引导下载[http://xpenology.me/downloads/](http://xpenology.me/downloads/) 修改vmware网卡为e1000ethernet0.virtualDev = &quot;e1000&quot; 配置硬盘为sata]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Synology</tag>
+        <tag>Vmware</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JDK多版本快速切换]]></title>
+    <url>%2F2016%2F12%2F15%2F2016-12-15-JDK%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[export JAVA_7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home export JAVA_HOME=$JAVA_7_HOME alias jdk7=&apos;export JAVA_HOME=$JAVA_7_HOME&apos; alias jdk8=&apos;export JAVA_HOME=$JAVA_8_HOME&apos;]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Valgrind]]></title>
+    <url>%2F2016%2F12%2F15%2F2016-12-15-Valgrind%2F</url>
+    <content type="text"><![CDATA[使用-fstack-check后会导致valgrind的main线程栈无法扩展]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>memory</tag>
+        <tag>valgrind</tag>
+        <tag>memory leak</tag>
+        <tag>memory damage</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[maven配置parent pom查找策略]]></title>
+    <url>%2F2016%2F12%2F15%2F2016-12-15-maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5%2F</url>
+    <content type="text"><![CDATA[当我们在pom.xml中添加parent pom的时候，通常maven会按照如下顺序查找: relativePath标签指向的路径。 默认的relativePath路径”../“。 本地maven仓库。 远程maven仓库。 注意事项: 通常我们在maven的setting.xml文件中，直接配置mirrors到指定的服务器就可以方便的进行开发了。但是如果我们要引用远程仓库中的包作为parent，则必须将该远程仓库通过profile方式添加进来，光使用mirrors映射到该仓库是无效的。]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C&C++内存检查]]></title>
+    <url>%2F2015%2F03%2F30%2F2015-03-30-C-C-%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5%2F</url>
+    <content type="text"><![CDATA[Valgrind(memcheck)valgrind通过监控进程的所有内存申请、释放及内存边界，能够有效发现内存问题； 优点： 功能全面，内存泄露、读写越界；除了memcheck还包括多线程互斥等各种工具； 出错后记录日志，便于一次性做全量测试，之后再来分析日志； 缺点： 有一定的误报率（和检测算法有关） 因为是虚拟运行环境方式，资源消耗较大；对于大型软件可能会降低软件运行效率； ###Address sanitizer GCC4.8开始自带的内存检查工具，通过编译选项直接在编译阶段对所有内存操作代码增加检查； 优点： 准确率100%，只要是检查出来的一定是问题 缺点： 只能检查内存(动态内存+栈)越界读写，无法检查内存泄露； 检测到问题时直接报错退出，必须修复后才能继续运行；这点对大量测试用例的批量执行不太友好，不过正是其100%的正确率，所以原则就是“检测出的问题你没理由不去修复”,简单说就是逼着你去修复。]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>memory</tag>
+        <tag>valgrind</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[shell中的正则表达式]]></title>
+    <url>%2F2015%2F03%2F22%2F2015-03-22-shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[使用方法很简单,例如要测试表达式中只含有数字: [[ &quot;1234&quot; =~ ^[0-9]*$ ]] 为了更加清晰的知道结果, 我们可以这样： [[ &quot;1234&quot; =~ ^[0-9]*$ ]] &amp;&amp; echo &quot;true&quot; 甚至这样: ([[ &quot;1234&quot; =~ ^[0-9]*$ ]] &amp;&amp; echo &quot;true&quot;)|| echo &quot;false&quot; 如果表达式成功则显示true,否则显示false]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+        <tag>shell</tag>
+        <tag>regexp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[no title]]></title>
+    <url>%2F2015%2F01%2F18%2F2015-01-18-No-Title%2F</url>
+    <content type="text"><![CDATA[来时雨蒙蒙去时雨茫茫滴滴江南水脉脉故乡情此去 不知几时路漫漫 他乡何所依]]></content>
+      <categories>
+        <category>随感</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Ruby工具]]></title>
+    <url>%2F2015%2F01%2F14%2F2015-01-14-Ruby%E5%B7%A5%E5%85%B7%2F</url>
+    <content type="text"><![CDATA[RubyRuby语言解释、执行器 RVM用于帮你安装Ruby环境，帮你管理多个Ruby环境，帮你管理你开发的每个Ruby应用使用机器上哪个Ruby环境。Ruby环境不仅仅是Ruby本身，还包括依赖的第三方Ruby插件。都由RVM管理。 Rails基于RUBY语言的Web开发框架。详细 RubyGemsRuby程序包管理器（ package manager），类似RPM、yast。最新Ruby版本默认包含RubyGems了。 GemGem文件是封装起来的Ruby应用程序或代码库。注：在终端下使用的gem命令，是RubyGems的客户端，用于安装、管理Gem包。 Gemfile定义应用依赖哪些GEM包，bundle根据该配置去寻找、安装GEM包。 RakeRake是一门构建语言，和make类似。Rake是用Ruby写的，它支持自己的DSL用来处理和维护Ruby程序。 Rails用rake扩展来完成多种不容任务，如数据库初始化、更新等。详细 RakefileRakefile是由Ruby编写，Rake的命令执行就是由Rakefile文件定义。 In a gem’s context, the Rakefile is extremely useful. It can hold various tasks to help building, testing and debugging your gem, among all other things that you might find useful.详细 Bundle相当于多个RubyGems批处理运行。在配置文件gemfilel里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包。 Bundler maintains a consistent environment for ruby applications. It tracks an application’s code and the rubygems it needs to run, so that an application will always have the exact gems (and versions) that it needs to run. 参考： http://rake.rubyforge.org/ http://rake.rubyforge.org/files/doc/rakefile_rdoc.html http://yinghuayuan8866.blog.163.com/blog/static/2245702720122909571/ http://martinfowler.com/articles/rake.html]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Ruby</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux线程状态]]></title>
+    <url>%2F2014%2F12%2F09%2F2014-12-09-linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%2F</url>
+    <content type="text"><![CDATA[Linux任务状态列表： D 不可中断 Uninterruptible sleep (usually IO) R 正在运行，或在队列中的进程 S 处于休眠状态 T 停止或被追踪 Z 僵尸进程 W 进入内存交换（从内核2.6开始无效） X 死掉的进程 &lt; 高优先级 N 低优先级 L 有些页被锁进内存 s 包含子进程 + 位于后台的进程组 l 多线程，克隆线程 常见问题： 1、任务一直处在D状态：内核提供了HungTask功能用于监控线程在D状态不退出，通常任务进入D状态主要是做IO也就是外部设备操作，问题可能在相关的驱动代码bug。]]></content>
+      <categories>
+        <category>OS</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Thread</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[景]]></title>
+    <url>%2F2012%2F01%2F15%2F2012-01-15-%E6%99%AF%2F</url>
+    <content type="text"><![CDATA[在渐渐散去的笑声、泪雨中，追忆着那春暖花开的日子。每一张笑脸，每一滴眼泪，每一刻即是永恒，却又似流星一闪即逝，岁月的长与短远不是时间所能衡量。在我还来不及把愿望许下，你已消失在天际。于是我怀揣着那早已支离破碎的的承诺（或许你知道，或许你早已不记得），行走在也已到来的夜幕中，追逐着落日，找寻着最后一缕霞光。沿着你留下的每一个脚印，走过你走过的路，苦过你的苦，微笑着你的微笑，追逐着你的追逐。 人们总说失去了才懂得珍惜，却不知是互相珍惜的时候，我们都未曾感受到，有些早已习以为常的东西，有一天会离去。。。夜的静容易使人产生遐想，心的寂静则让我懂得去感受。每个男人的心中都有一滴眼泪，不愿在别人面前哭泣，却又害怕你看到的时候会离开~又或是，当你离开的时候它才会落下。过分的寂静却又容易让人害怕，甚至恐慌。于是，周期性的，我在黑夜中迷失，在寂寞中慌乱，宛若溺水或跌落悬崖，拼命握住那每一颗够得着的树枝。于是，夜似乎并没有那没黑，大地也多了几分色彩。在平淡无奇的日子里，在草地上、树荫下，体会着每一个熟悉又陌生的瞬间。然而，每当夜幕到来的时候，总有那么一缕光出现在梦]]></content>
+      <categories>
+        <category>随感</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[一枝 一叶 一思念]]></title>
+    <url>%2F2012%2F01%2F15%2F2012-01-15-%E4%B8%80%E6%9E%9D-%E4%B8%80%E5%8F%B6-%E4%B8%80%E6%80%9D%E5%BF%B5%2F</url>
+    <content type="text"><![CDATA[秋叶 绿竹 春去 冬来 我依然在这儿 静静的]]></content>
+      <categories>
+        <category>随感</category>
+      </categories>
+  </entry>
+</search>

@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[SSR部署]]></title>
     <url>%2F2018%2F12%2F02%2FSSR%E9%83%A8%E7%BD%B2%2F</url>
-    <content type="text"><![CDATA[租一个国外的服务器当前使用的服务器厂商是Vultr的，部分服务器在国内被屏蔽，建议采用东京区的。也可以多创建几个试下。 一键部署SSR服务端1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh SSR配置创建Snapshot使用snapshot]]></content>
+    <content type="text"><![CDATA[租一个国外的服务器当前使用的服务器厂商是Vultr的，部分服务器在国内被屏蔽，建议采用东京区的。也可以多创建几个试下。 一键部署SSR服务端1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh SSR配置创建Snapshot使用snapshotShadowsock客户端下载部署完服务器，还必须要有对应的客户端才能把SSR用起来。当前国内基本已经把shadowsocks的下载路径都封了，可以通过到Github上的Shadowsocks社区下载需要的版本： shadowsocks社区 下面是常用的几个版本链接： 软件名称 系统 下载链接 ShadowsocksX-NG OSX https://github.com/shadowsocks/ShadowsocksX-NG/releases shadowsocks-windows windows https://github.com/shadowsocks/shadowsocks-windows/releases shadowsocks-android android https://github.com/shadowsocks/shadowsocks-android/releases]]></content>
       <categories>
         <category>工具</category>
       </categories>

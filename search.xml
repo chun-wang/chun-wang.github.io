@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SSR部署]]></title>
+    <url>%2F2018%2F12%2F02%2FSSR%E9%83%A8%E7%BD%B2%2F</url>
+    <content type="text"><![CDATA[租一个国外的服务器当前使用的服务器厂商是Vultr的，部分服务器在国内被屏蔽，建议采用东京区的。也可以多创建几个试下。 一键部署SSR服务端1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh SSR配置创建Snapshot使用snapshot]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>SSR</tag>
+        <tag>翻墙</tag>
+        <tag>shadowsock</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux异常处理]]></title>
     <url>%2F2018%2F12%2F02%2FLinux%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%2F</url>
     <content type="text"><![CDATA[从libSegFault.so说起12345env SEGFAULT_SIGNALS=&quot;abrt segv&quot;LD_PRELOAD=/lib/libSegFault.so someapp https://sourceware.org/git/?p=glibc.git;a=blob;f=debug/segfault.c;hb=HEAD]]></content>

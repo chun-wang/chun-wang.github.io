@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Jitsi-videobridge负载均衡]]></title>
+    <url>%2F2018%2F12%2F15%2FJitsi-videobridge%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%2F</url>
+    <content type="text"><![CDATA[背景本文主要解决两个问题： 支持单中心多videobridge，实现媒体流的负载均衡和能力扩展。 解决Jicofo默认的在线状态检查检测不到videobridge快速上下线问题^1 。 官方参考：https://github.com/jitsi/jicofo/blob/master/doc/load_balancing.md 配置Prosody支持发布/etc/prosody/conf.d/example.cn.cfg.lua 在modules_enabled中增加”pubsub”模块，使能订阅发布能力 增加admins设置，在里面加上需要订阅、发布的videobridge(这样JVB才有权限创建PubSub节点) 如果有多个videobridge，则一一在配置文件内添加即可 1234567891011121314VirtualHost "example.cn"truetrue-- 中间省略 modules_enabled = &#123; "bosh"; "pubsub"; "ping"; -- Enable mod_ping &#125;truetrue admins = &#123; "jitsi-videobridge.example.cn" &#125;Component "jitsi-videobridge.example.cn" component_secret = "65EVA9o8" 配置videobridge状态发布修改配置文件/etc/jitsi/videobridge/sip-communicator.properties，其中PUBSUB_SERVICE为prosody上用于发布状态的Virtualhost，PUBSUB_NODE为状态发布到的节点名称，这两个字段必须和后面Jicofo的配置保持一致。 1234org.jitsi.videobridge.ENABLE_STATISTICS=trueorg.jitsi.videobridge.STATISTICS_TRANSPORT=pubsuborg.jitsi.videobridge.PUBSUB_SERVICE=example.comorg.jitsi.videobridge.PUBSUB_NODE=sharedStatsNode 配置jicofo订阅状态修改配置文件/etc/jitsi/jicofo/sip-communicator.properties，这两项配置需要和上述videibridge内的配置保持一致，这样Jicofo才能正确订阅到videobridge发布的状态信息。 12org.jitsi.focus.pubsub.ADDRESS=example.comorg.jitsi.jicofo.STATS_PUBSUB_NODE=sharedStatsNode]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Jitsi</tag>
+        <tag>负载均衡</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[架构师技能图谱（转）]]></title>
+    <url>%2F2018%2F12%2F07%2F%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1%EF%BC%88%E8%BD%AC%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>架构</tag>
+        <tag>设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用iperf测试机器间带宽]]></title>
+    <url>%2F2018%2F12%2F06%2F%E4%BD%BF%E7%94%A8iperf%E6%B5%8B%E8%AF%95%E6%9C%BA%E5%99%A8%E9%97%B4%E5%B8%A6%E5%AE%BD%2F</url>
+    <content type="text"><![CDATA[背景在做环境部署或测试时，经常会想知道两台机器间的最大网络带宽。最简单的办法就是直接在两台机器间拷贝一个大文件，通过拷贝速度就可以大致估算网络带宽，不过这一方法往往不够准确。借助iperf工具则可以简单、准确的完成这一工作。 安装iperf如果使用的时ubuntu系统，可以直接通过apt安装 1sudo apt-get install iperf 也可以到官网手工下载安装包安装最新版本，基本提供了常用的各类系统的版本： https://iperf.fr/iperf-download.php 以下测试命令均使用了iperf3版本 iperf命令12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455Usage: iperf [-s|-c host] [options] iperf [-h|--help] [-v|--version]Server or Client: -p, --port # server port to listen on/connect to -f, --format [kmgKMG] format to report: Kbits, Mbits, KBytes, MBytes -i, --interval # seconds between periodic bandwidth reports -F, --file name xmit/recv the specified file -A, --affinity n/n,m set CPU affinity -B, --bind &lt;host&gt; bind to a specific interface -V, --verbose more detailed output -J, --json output in JSON format --logfile f send output to a log file -d, --debug emit debugging output -v, --version show version information and quit -h, --help show this message and quitServer specific: -s, --server run in server mode -D, --daemon run the server as a daemon -I, --pidfile file write PID file -1, --one-off handle one client connection then exitClient specific: -c, --client &lt;host&gt; run in client mode, connecting to &lt;host&gt; -u, --udp use UDP rather than TCP -b, --bandwidth #[KMG][/#] target bandwidth in bits/sec (0 for unlimited) (default 1 Mbit/sec for UDP, unlimited for TCP) (optional slash and packet count for burst mode) -t, --time # time in seconds to transmit for (default 10 secs) -n, --bytes #[KMG] number of bytes to transmit (instead of -t) -k, --blockcount #[KMG] number of blocks (packets) to transmit (instead of - t or -n) -l, --len #[KMG] length of buffer to read or write (default 128 KB for TCP, 8 KB for UDP) --cport &lt;port&gt; bind to a specific client port (TCP and UDP, default : ephemeral port) -P, --parallel # number of parallel client streams to run -R, --reverse run in reverse mode (server sends, client receives) -w, --window #[KMG] set window size / socket buffer size -C, --congestion &lt;algo&gt; set TCP congestion control algorithm (Linux and Free BSD only) -M, --set-mss # set TCP/SCTP maximum segment size (MTU - 40 bytes) -N, --no-delay set TCP/SCTP no delay, disabling Nagle's Algorithm -4, --version4 only use IPv4 -6, --version6 only use IPv6 -S, --tos N set the IP 'type of service' -L, --flowlabel N set the IPv6 flow label (only supported on Linux) -Z, --zerocopy use a 'zero copy' method of sending data -O, --omit N omit the first n seconds -T, --title str prefix every output line with this string --get-server-output get results from server --udp-counters-64bit use 64-bit counters in UDP test packets --no-fq-socket-pacing disable fair-queuing based socket pacing (Linux only)[KMG] indicates options that support a K/M/G suffix for kilo-, mega-, or giga-iperf3 homepage at: http://software.es.net/iperf/Report bugs to: https://github.com/esnet/iperf 启动iperf服务端直接在命令行下执行iperf -s即可启动服务端，默认监听的地址是0.0.0.0:5001 12345$ iperf -s------------------------------------------------------------Server listening on TCP port 5001TCP window size: 85.3 KByte (default)------------------------------------------------------------ 启动iperf客户端启动客户端并指定连接到刚才的服务端地址，就可以启动速度测试了 1234567891011121314151617181920$ iperf3 -c 10.247.109.99Connecting to host 10.247.109.99, port 5201[ 4] local 10.37.127.241 port 58107 connected to 10.247.109.99 port 5201[ ID] Interval Transfer Bandwidth[ 4] 0.00-1.01 sec 1.75 MBytes 14.6 Mbits/sec[ 4] 1.01-2.01 sec 2.75 MBytes 23.1 Mbits/sec[ 4] 2.01-3.01 sec 2.25 MBytes 18.8 Mbits/sec[ 4] 3.01-4.01 sec 2.62 MBytes 22.0 Mbits/sec[ 4] 4.01-5.00 sec 1.00 MBytes 8.45 Mbits/sec[ 4] 5.00-6.00 sec 2.38 MBytes 19.9 Mbits/sec[ 4] 6.00-7.00 sec 2.62 MBytes 22.0 Mbits/sec[ 4] 7.00-8.00 sec 2.12 MBytes 17.8 Mbits/sec[ 4] 8.00-9.00 sec 1.88 MBytes 15.7 Mbits/sec[ 4] 9.00-10.00 sec 2.88 MBytes 24.1 Mbits/sec- - - - - - - - - - - - - - - - - - - - - - - - -[ ID] Interval Transfer Bandwidth[ 4] 0.00-10.00 sec 22.2 MBytes 18.7 Mbits/sec sender[ 4] 0.00-10.00 sec 22.1 MBytes 18.5 Mbits/sec receiveriperf Done. 可以看到连接的上下行速率分别是18.7Mbps和18.5Mbps。]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>iperf</tag>
+        <tag>带宽</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SSR部署]]></title>
     <url>%2F2018%2F12%2F02%2FSSR%E9%83%A8%E7%BD%B2%2F</url>
     <content type="text"><![CDATA[租一个国外的服务器当前使用的服务器厂商是Vultr的，部分服务器在国内被屏蔽，建议采用东京区的。也可以多创建几个试下。 一键部署SSR服务端1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh SSR配置创建Snapshot使用snapshotShadowsock客户端下载部署完服务器，还必须要有对应的客户端才能把SSR用起来。当前国内基本已经把shadowsocks的下载路径都封了，可以通过到Github上的Shadowsocks社区下载需要的版本： shadowsocks社区 下面是常用的几个版本链接： 软件名称 系统 下载链接 ShadowsocksX-NG OSX https://github.com/shadowsocks/ShadowsocksX-NG/releases shadowsocks-windows windows https://github.com/shadowsocks/shadowsocks-windows/releases shadowsocks-android android https://github.com/shadowsocks/shadowsocks-android/releases]]></content>

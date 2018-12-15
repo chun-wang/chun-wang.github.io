@@ -8,8 +8,63 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Sun, 02 Dec 2018 14:41:54 GMT</pubDate>
+    <pubDate>Sat, 15 Dec 2018 14:46:42 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Jitsi-videobridge负载均衡</title>
+      <link>https://blog.springfavor.cn/2018/12/15/Jitsi-videobridge%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
+      <guid>https://blog.springfavor.cn/2018/12/15/Jitsi-videobridge%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
+      <pubDate>Sat, 15 Dec 2018 14:27:52 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;本文主要解决两个问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;支持单中心多videobridge，实现媒体流的负载均衡和能力扩展。&lt;/li&gt;
+&lt;li&gt;解
+        
+      
+      </description>
+      
+      <comments>https://blog.springfavor.cn/2018/12/15/Jitsi-videobridge%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>架构师技能图谱（转）</title>
+      <link>https://blog.springfavor.cn/2018/12/07/%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1%EF%BC%88%E8%BD%AC%EF%BC%89/</link>
+      <guid>https://blog.springfavor.cn/2018/12/07/%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1%EF%BC%88%E8%BD%AC%EF%BC%89/</guid>
+      <pubDate>Fri, 07 Dec 2018 10:48:49 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;http://qiniu.springfavor.cn/img/20181207182925.png&quot; alt=&quot;架构师技能&quot;&gt;&lt;/p&gt;
+
+        
+      
+      </description>
+      
+      <comments>https://blog.springfavor.cn/2018/12/07/%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1%EF%BC%88%E8%BD%AC%EF%BC%89/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>使用iperf测试机器间带宽</title>
+      <link>https://blog.springfavor.cn/2018/12/06/%E4%BD%BF%E7%94%A8iperf%E6%B5%8B%E8%AF%95%E6%9C%BA%E5%99%A8%E9%97%B4%E5%B8%A6%E5%AE%BD/</link>
+      <guid>https://blog.springfavor.cn/2018/12/06/%E4%BD%BF%E7%94%A8iperf%E6%B5%8B%E8%AF%95%E6%9C%BA%E5%99%A8%E9%97%B4%E5%B8%A6%E5%AE%BD/</guid>
+      <pubDate>Thu, 06 Dec 2018 13:48:49 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;在做环境部署或测试时，经常会想知道两台机器间的最大网络带宽。最简单的办法就是直接在两台机器间拷贝一个大文件，通过拷贝速度就可以大致估算网络带
+        
+      
+      </description>
+      
+      <comments>https://blog.springfavor.cn/2018/12/06/%E4%BD%BF%E7%94%A8iperf%E6%B5%8B%E8%AF%95%E6%9C%BA%E5%99%A8%E9%97%B4%E5%B8%A6%E5%AE%BD/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>SSR部署</title>
@@ -327,44 +382,6 @@ W    进入内存交换
       </description>
       
       <comments>https://blog.springfavor.cn/2014/12/09/linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>景</title>
-      <link>https://blog.springfavor.cn/2012/01/15/%E6%99%AF/</link>
-      <guid>https://blog.springfavor.cn/2012/01/15/%E6%99%AF/</guid>
-      <pubDate>Sat, 14 Jan 2012 19:03:29 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;p&gt;在渐渐散去的笑声、泪雨中，追忆着那春暖花开的日子。每一张笑脸，每一滴眼泪，每一刻即是永恒，却又似流星一闪即逝，岁月的长与短远不是时间所能衡量。在我还来不及把愿望许下，你已消失在天际。于是我怀揣着那早已支离破碎的的承诺（或许你知道，或许你早已不记得），行走在也已到来的夜幕中，
-        
-      
-      </description>
-      
-      <comments>https://blog.springfavor.cn/2012/01/15/%E6%99%AF/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>一枝 一叶 一思念</title>
-      <link>https://blog.springfavor.cn/2012/01/15/%E4%B8%80%E6%9E%9D%20%E4%B8%80%E5%8F%B6%20%E4%B8%80%E6%80%9D%E5%BF%B5/</link>
-      <guid>https://blog.springfavor.cn/2012/01/15/%E4%B8%80%E6%9E%9D%20%E4%B8%80%E5%8F%B6%20%E4%B8%80%E6%80%9D%E5%BF%B5/</guid>
-      <pubDate>Sat, 14 Jan 2012 18:03:29 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;p&gt;秋叶 绿竹&lt;/p&gt;
-&lt;p&gt;春去 冬来&lt;/p&gt;
-&lt;p&gt;我依然在这儿&lt;/p&gt;
-&lt;p&gt;静静的&lt;/p&gt;
-
-        
-      
-      </description>
-      
-      <comments>https://blog.springfavor.cn/2012/01/15/%E4%B8%80%E6%9E%9D%20%E4%B8%80%E5%8F%B6%20%E4%B8%80%E6%80%9D%E5%BF%B5/#disqus_thread</comments>
     </item>
     
   </channel>

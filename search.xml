@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux目标文件]]></title>
+    <url>%2F2018%2F12%2F22%2FLinux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[文件格式解析参考https://docs.oracle.com/cd/E19253-01/819-7050/6n918j8nn/index.html 常用工具 工具 用途 ar 创建静态库，插入、删除、列出和提取成员 Strings 列出一个目标文件中说有可以打印的字符串 Strip 从目标文件中删除符号表信息 nm 列出一个目标文件符号表中定义的符号 size 列出目标文件中节的名字和大小 readily 显示一个目标文件的完整结构，包括ELF头中编码的所有信息，包含SIZE和NM的功能 bjdump 所有二进制工具之母，能够显示一个目标文件中所有的信息，他最大的uzoyong是反汇编.text节中的二进制指令 ldd 列出一个可执行文件在运行时所需要的共享库]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>elf</tag>
+        <tag>linux</tag>
+        <tag>object</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Jitsi-videobridge负载均衡]]></title>
     <url>%2F2018%2F12%2F15%2FJitsi-videobridge%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%2F</url>
     <content type="text"><![CDATA[背景本文主要解决两个问题： 支持单中心多videobridge，实现媒体流的负载均衡和能力扩展。 解决Jicofo默认的在线状态检查检测不到videobridge快速上下线问题。 说明：Jicofo默认检查节点状态是定时查询xmpp上在线的Component，如果videobridge发生重启，首先会触发健康检查失败，Jicofo会感知videobridge下线。但如果videibridge在检查周期之前重新上线，检查器内保存的在线节点并不会有变化，因此也不会上报bridge上线的事件。 官方参考想要了解最新的配置方法，可以参考Jitsi官方的配置文档： https://github.com/jitsi/jicofo/blob/master/doc/load_balancing.md Prosody订阅发布能力修改配置文件/etc/prosody/conf.d/example.cn.cfg.lua: 在modules_enabled中增加”pubsub”模块，使能订阅发布能力 增加admins设置，在里面加上需要订阅、发布的videobridge(这样JVB才有权限创建PubSub节点) 如果有多个videobridge，则一一在配置文件内添加即可 1234567891011121314VirtualHost "example.cn"truetrue-- 中间省略 modules_enabled = &#123; "bosh"; "pubsub"; "ping"; -- Enable mod_ping &#125;truetrue admins = &#123; "jitsi-videobridge.example.cn" &#125;Component "jitsi-videobridge.example.cn" component_secret = "65EVA9o8" Videobridge发布在线状态修改配置文件/etc/jitsi/videobridge/sip-communicator.properties，其中PUBSUB_SERVICE为prosody上用于发布状态的Virtualhost，PUBSUB_NODE为状态发布到的节点名称，这两个字段必须和后面Jicofo的配置保持一致。 1234org.jitsi.videobridge.ENABLE_STATISTICS=trueorg.jitsi.videobridge.STATISTICS_TRANSPORT=pubsuborg.jitsi.videobridge.PUBSUB_SERVICE=example.comorg.jitsi.videobridge.PUBSUB_NODE=sharedStatsNode Jicofo订阅在线状态修改配置文件/etc/jitsi/jicofo/sip-communicator.properties，这两项配置需要和上述videibridge内的配置保持一致，这样Jicofo才能正确订阅到videobridge发布的状态信息。 12org.jitsi.focus.pubsub.ADDRESS=example.comorg.jitsi.jicofo.STATS_PUBSUB_NODE=sharedStatsNode]]></content>

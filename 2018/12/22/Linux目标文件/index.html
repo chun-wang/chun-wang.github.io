@@ -1,9 +1,50 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="海纳百川 有容乃大"><title>committer机制 | Spring Favor</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.1"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/rss+xml" href="/rss2.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">committer机制</h1><a id="logo" href="/.">Spring Favor</a><p class="description">Wang Chun's Blog</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/timeline/"><i class="fa fa-history"> 历史</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">committer机制</h1><div class="post-meta">Mar 3, 2018<span> | </span><span class="category"><a href="/categories/软件工程/">软件工程</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/03/03/committer机制/" href="/2018/03/03/committer机制/#disqus_thread"></a><div class="post-content"><p>人才培养是一个艰难的过程，最近就已经遇到过很多次。我们的员工能力往往并没有主管想得那么强，当你在审视方案、检视代码时说要解耦、依赖关系应该倒过来。结果发现员工并不理解这些“词汇”的含义是什么。</p>
-<h4 id="回归到研发的本质上来"><a href="#回归到研发的本质上来" class="headerlink" title="回归到研发的本质上来"></a>回归到研发的本质上来</h4><h4 id="首先应该是导师"><a href="#首先应该是导师" class="headerlink" title="首先应该是导师"></a>首先应该是导师</h4><p>检视审核代码的过程其实是最好的人员培养过程。很多经验告诉我们 任何形式的培训、学习都不如实践来的    快而有效，然而实践很多时候确是可遇不可求的（还记得别人问你今年又写了多少代码后的尴尬吗？）那么 我们就需要把人才培养过程尽可能的融入到宝贵的开发过程中。</p>
-</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>chunwang</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/03/03/committer机制/">https://blog.springfavor.cn/2018/03/03/committer机制/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>The author owns the copyright, please indicate the source reproduced.</li></ul></div><br><div class="tags"><a href="/tags/committer/">committer</a></div><div class="post-nav"><a class="pre" href="/2018/10/10/架构设计/">架构设计</a><a class="next" href="/2017/01/10/Git-Lfs/">Git-Lfs</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
-    this.page.url = 'https://blog.springfavor.cn/2018/03/03/committer机制/';
-    this.page.identifier = '2018/03/03/committer机制/';
-    this.page.title = 'committer机制';
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="海纳百川 有容乃大"><title>Linux目标文件 | Spring Favor</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.1"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/rss+xml" href="/rss2.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Linux目标文件</h1><a id="logo" href="/.">Spring Favor</a><p class="description">Wang Chun's Blog</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/timeline/"><i class="fa fa-history"> 历史</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Linux目标文件</h1><div class="post-meta">Dec 22, 2018<span> | </span><span class="category"><a href="/categories/Develop/">Develop</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/12/22/Linux目标文件/" href="/2018/12/22/Linux目标文件/#disqus_thread"></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件格式解析"><span class="toc-text">文件格式解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用工具"><span class="toc-text">常用工具</span></a></div></div><div class="post-content"><h4 id="文件格式解析"><a href="#文件格式解析" class="headerlink" title="文件格式解析"></a>文件格式解析</h4><p>参考<a href="https://docs.oracle.com/cd/E19253-01/819-7050/6n918j8nn/index.html" target="_blank" rel="noopener">https://docs.oracle.com/cd/E19253-01/819-7050/6n918j8nn/index.html</a></p>
+<h3 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ar</td>
+<td>创建静态库，插入、删除、列出和提取成员</td>
+</tr>
+<tr>
+<td>Strings</td>
+<td>列出一个目标文件中说有可以打印的字符串</td>
+</tr>
+<tr>
+<td>Strip</td>
+<td>从目标文件中删除符号表信息</td>
+</tr>
+<tr>
+<td>nm</td>
+<td>列出一个目标文件符号表中定义的符号</td>
+</tr>
+<tr>
+<td>size</td>
+<td>列出目标文件中节的名字和大小</td>
+</tr>
+<tr>
+<td>readily</td>
+<td>显示一个目标文件的完整结构，包括ELF头中编码的所有信息，包含SIZE和NM的功能</td>
+</tr>
+<tr>
+<td>bjdump</td>
+<td>所有二进制工具之母，能够显示一个目标文件中所有的信息，他最大的uzoyong是反汇编.text节中的二进制指令</td>
+</tr>
+<tr>
+<td>ldd</td>
+<td>列出一个可执行文件在运行时所需要的共享库</td>
+</tr>
+</tbody>
+</table>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>chunwang</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/12/22/Linux目标文件/">https://blog.springfavor.cn/2018/12/22/Linux目标文件/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>The author owns the copyright, please indicate the source reproduced.</li></ul></div><br><div class="tags"><a href="/tags/elf/">elf</a><a href="/tags/linux/">linux</a><a href="/tags/object/">object</a></div><div class="post-nav"><a class="next" href="/2018/12/15/Jitsi-videobridge负载均衡/">Jitsi-videobridge负载均衡</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'https://blog.springfavor.cn/2018/12/22/Linux目标文件/';
+    this.page.identifier = '2018/12/22/Linux目标文件/';
+    this.page.title = 'Linux目标文件';
   };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
 url: 'https://disqus.com/next/config.json',
 timeout: 2500,
@@ -46,7 +87,7 @@ error: function() {
      xhr.send(null);
    });
 </script></div><div id="container"></div><link rel="stylesheet" href="/css/default.css?v=0.0.1"><script src="/js/gitment.browser.js?v=0.0.1"></script><script>var gitment = new Gitment({
-  id: '1520072746000',
+  id: '1545486452000',
   owner: 'chun-wang',
   repo: 'chun-wang.github.io',
   oauth: {

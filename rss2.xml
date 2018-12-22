@@ -8,8 +8,25 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Sat, 15 Dec 2018 15:22:40 GMT</pubDate>
+    <pubDate>Sat, 22 Dec 2018 14:05:20 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Linux目标文件</title>
+      <link>https://blog.springfavor.cn/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/</link>
+      <guid>https://blog.springfavor.cn/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/</guid>
+      <pubDate>Sat, 22 Dec 2018 13:47:32 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h4 id=&quot;文件格式解析&quot;&gt;&lt;a href=&quot;#文件格式解析&quot; class=&quot;headerlink&quot; title=&quot;文件格式解析&quot;&gt;&lt;/a&gt;文件格式解析&lt;/h4&gt;&lt;p&gt;参考&lt;a href=&quot;https://docs.oracle.com/cd/E19253-01/819-70
+        
+      
+      </description>
+      
+      <comments>https://blog.springfavor.cn/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Jitsi-videobridge负载均衡</title>
@@ -359,29 +376,6 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       </description>
       
       <comments>https://blog.springfavor.cn/2015/01/14/Ruby%E5%B7%A5%E5%85%B7/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>Linux线程状态</title>
-      <link>https://blog.springfavor.cn/2014/12/09/linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</link>
-      <guid>https://blog.springfavor.cn/2014/12/09/linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</guid>
-      <pubDate>Tue, 09 Dec 2014 07:54:29 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;p&gt;Linux任务状态列表：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;D    不可中断 Uninterruptible sleep (usually IO)
-R    正在运行，或在队列中的进程
-S    处于休眠状态
-T    停止或被追踪
-Z    僵尸进程
-W    进入内存交换
-        
-      
-      </description>
-      
-      <comments>https://blog.springfavor.cn/2014/12/09/linux%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/#disqus_thread</comments>
     </item>
     
   </channel>

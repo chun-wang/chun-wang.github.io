@@ -8,7 +8,7 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Sat, 26 Jan 2019 13:32:34 GMT</pubDate>
+    <pubDate>Sat, 26 Jan 2019 13:53:39 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -20,7 +20,9 @@
       
         
         
-          &lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;布隆过滤器是用来判断一个元素是否出现在给定集合中的重要工具，具有快速，比哈希表更节省空间等优点，而缺点在于有一定的误识别率（false-po
+          &lt;h4 id=&quot;常见问题&quot;&gt;&lt;a href=&quot;#常见问题&quot; class=&quot;headerlink&quot; title=&quot;常见问题&quot;&gt;&lt;/a&gt;常见问题&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;编辑器软件需要检查一个英语单词是否拼写正确&lt;/li&gt;
+&lt;li&gt;广告、新闻推荐时判断一篇文章是否已经推荐过&lt;/li
         
       
       </description>

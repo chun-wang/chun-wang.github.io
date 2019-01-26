@@ -8,8 +8,25 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Sun, 13 Jan 2019 12:48:35 GMT</pubDate>
+    <pubDate>Sat, 26 Jan 2019 13:32:34 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>布隆过滤器(BloomFilter)</title>
+      <link>https://blog.springfavor.cn/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/</link>
+      <guid>https://blog.springfavor.cn/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/</guid>
+      <pubDate>Sat, 26 Jan 2019 13:04:53 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;布隆过滤器是用来判断一个元素是否出现在给定集合中的重要工具，具有快速，比哈希表更节省空间等优点，而缺点在于有一定的误识别率（false-po
+        
+      
+      </description>
+      
+      <comments>https://blog.springfavor.cn/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Linux目标文件</title>
@@ -358,24 +375,6 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       </description>
       
       <comments>https://blog.springfavor.cn/2015/01/18/No%20Title/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>Ruby工具</title>
-      <link>https://blog.springfavor.cn/2015/01/14/Ruby%E5%B7%A5%E5%85%B7/</link>
-      <guid>https://blog.springfavor.cn/2015/01/14/Ruby%E5%B7%A5%E5%85%B7/</guid>
-      <pubDate>Wed, 14 Jan 2015 07:54:29 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;h3 id=&quot;Ruby&quot;&gt;&lt;a href=&quot;#Ruby&quot; class=&quot;headerlink&quot; title=&quot;Ruby&quot;&gt;&lt;/a&gt;Ruby&lt;/h3&gt;&lt;p&gt;Ruby语言解释、执行器&lt;/p&gt;
-&lt;h3 id=&quot;RVM&quot;&gt;&lt;a href=&quot;#RVM&quot; class=&quot;headerlink
-        
-      
-      </description>
-      
-      <comments>https://blog.springfavor.cn/2015/01/14/Ruby%E5%B7%A5%E5%85%B7/#disqus_thread</comments>
     </item>
     
   </channel>

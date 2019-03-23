@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[IntelliJ基本配置]]></title>
     <url>%2F2019%2F01%2F30%2FIntelliJ%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[统一文件编码(UTF-8)1Settings -&gt; Editor -&gt; File Encodings 文件版权头配置(copyright)1Settings -&gt; Editor -&gt; Copyright -&gt; Copyright Profiles 版权信息基本格式： 1Copyright (c) $today.year,上海DEMO有限公司网络应用事业部. All rights reserved. 步骤一：创建版权信息模板 步骤二：配置使用刚创建的版权信息模板 安装配置(CheckStyle-IDEA)1File-&gt;settings-&gt;plugin-&gt;搜索插件:CheckStyle-IDEA-&gt;install 配置checkstyle 自动格式化配置(Eclipse Code Formatter)1File-&gt;settings-&gt;plugin-&gt;搜索插件:Eclipse Code Formatter-IDEA-&gt;install 抑制自动import使用通配符1settings-&gt;Editor-&gt;Code Style-&gt;Java-&gt;Imports-&gt;Use single class import]]></content>
+    <content type="text"><![CDATA[统一文件编码(UTF-8)1Settings -&gt; Editor -&gt; File Encodings 行宽及指示线配置1Settings -&gt; Editor -&gt; Code Style -&gt; Hard wrap at 自动删除行尾空格1Settings -&gt; Editor -&gt; General -&gt; Other 文件版权头配置(copyright)1Settings -&gt; Editor -&gt; Copyright -&gt; Copyright Profiles 版权信息基本格式： 1Copyright (c) $today.year,上海DEMO有限公司网络应用事业部. All rights reserved. 步骤一：创建版权信息模板 步骤二：配置使用刚创建的版权信息模板 安装配置(CheckStyle-IDEA)1File-&gt;settings-&gt;plugin-&gt;搜索插件:CheckStyle-IDEA-&gt;install 配置checkstyle 自动格式化配置(Eclipse Code Formatter)1File-&gt;settings-&gt;plugin-&gt;搜索插件:Eclipse Code Formatter-IDEA-&gt;install 抑制自动import使用通配符1settings-&gt;Editor-&gt;Code Style-&gt;Java-&gt;Imports-&gt;Use single class import]]></content>
       <categories>
         <category>工具</category>
       </categories>

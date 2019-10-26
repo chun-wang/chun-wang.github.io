@@ -2875,7 +2875,7 @@ function renderHeader(_ref, instance) {
   issueLink.className = 'gitment-header-issue-link';
   issueLink.href = meta.html_url;
   issueLink.target = '_blank';
-  issueLink.innerText = '请转到 Issue Page 直接评论';
+  issueLink.innerText = 'Issue Page';
   container.appendChild(issueLink);
 
   return container;

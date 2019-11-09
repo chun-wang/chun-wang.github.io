@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Mac使用ffmpeg转换DTS音频]]></title>
+    <url>%2F2019%2F11%2F09%2FMac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91%2F</url>
+    <content type="text"><![CDATA[安装Homebrew（已经安装可跳过）操作： 启动终端程序(应用程序 －&gt; 实用工具 －&gt; 终端 ） 安装brew. 安装命令： 1ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 安装ffmpeg安装命令： 1brew install ffmpeg 使用ffmpeg转换DTS音频 转为双音轨的苹果无损格式： 1for file in *.wav; do name=$(echo $file | sed "s/\\.wav//g"); ffmpeg -acodec dts -i "$name".wav -vn -sn -ac 2 -acodec alac "$name".m4a; done 转换完毕后，将同目录下找到.m4a 的文件，导入iTunes. 转为保留全部音轨（6.1）的 flac 格式： 1for file in *.wav; do name=$(echo $file | sed "s/\\.wav//g"); ffmpeg -acodec dts -i "$name".wav -vn -sn -acodec flac "$name".flac; done]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[librdkafka编译构建]]></title>
     <url>%2F2019%2F03%2F24%2Flibrdkafka%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%2F</url>
     <content type="text"><![CDATA[版本获取https://github.com/edenhill/librdkafka/releases 构建命令12345export LIBS="-lssl -lcrypto"export CPATH=/opt/tools/openssl/include./configure --prefix=/opt/tools/librdkafka --LDFLAGS="-L/opt/tools/openssl/lib" --mbits=32makemake install 支持32位1--mbits=32 支持SSL官方说明：https://github.com//edenhill/librdkafka/wiki/Using-SSL-with-librdkafka 有时候项目中会采用自定义的库目录放置openssl，如果有类似诉求，可以做如下设置 添加openssl头文件包含路径(其中OPENSSL__INCLUDE为头文件路径) 1export CPATH=$CPATH:$OPENSSL_INCLUDE configure时添加LDFLAGS参数或将LDFLAGS导出为环境变量(其中OPENSSL_LIB_PATH为库所在路径)，以下方法二选一即可。 12a. --LDFLAGS="-L$OPENSSL_LIB_PATH"b. export LDFLAGS="_L$OPENSSL_LIB_PATH" 当前获取的librdkafka包在使用openssl时存在一个BUG，由于SSL库链接顺序问题导致example里面的代码链接出错，具体解决情况可以跟踪官方ISSUE：https://github.com//edenhill/librdkafka/issues/1576 这里给出一个规避方案：在编译时配置LIBS环境变量，强制覆盖SSL库的顺序 1export LIBS="-lssl -lcrypto"]]></content>

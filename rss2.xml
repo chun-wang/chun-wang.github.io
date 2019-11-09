@@ -8,8 +8,25 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Sat, 26 Oct 2019 13:54:26 GMT</pubDate>
+    <pubDate>Sat, 09 Nov 2019 02:49:03 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Mac使用ffmpeg转换DTS音频</title>
+      <link>https://blog.springfavor.cn/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/</link>
+      <guid>https://blog.springfavor.cn/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/</guid>
+      <pubDate>Sat, 09 Nov 2019 02:36:40 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h4 id=&quot;安装Homebrew（已经安装可跳过）&quot;&gt;&lt;a href=&quot;#安装Homebrew（已经安装可跳过）&quot; class=&quot;headerlink&quot; title=&quot;安装Homebrew（已经安装可跳过）&quot;&gt;&lt;/a&gt;安装Homebrew（已经安装可跳过）&lt;/h4&gt;&lt;p&gt;操作
+        
+      
+      </description>
+      
+      <comments>https://blog.springfavor.cn/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>librdkafka编译构建</title>
@@ -356,23 +373,6 @@ export JAVA_8_HOME=/Library/Java/JavaVirtualMa
       </description>
       
       <comments>https://blog.springfavor.cn/2016/12/15/maven%E9%85%8D%E7%BD%AEparent-pom%E6%9F%A5%E6%89%BE%E7%AD%96%E7%95%A5/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>C&amp;C++内存检查</title>
-      <link>https://blog.springfavor.cn/2015/03/30/C&amp;C++%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/</link>
-      <guid>https://blog.springfavor.cn/2015/03/30/C&amp;C++%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/</guid>
-      <pubDate>Mon, 30 Mar 2015 14:51:52 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;h3 id=&quot;Valgrind-memcheck&quot;&gt;&lt;a href=&quot;#Valgrind-memcheck&quot; class=&quot;headerlink&quot; title=&quot;Valgrind(memcheck)&quot;&gt;&lt;/a&gt;Valgrind(memcheck)&lt;/h3&gt;&lt;p&gt;valgrind
-        
-      
-      </description>
-      
-      <comments>https://blog.springfavor.cn/2015/03/30/C&amp;C++%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5/#disqus_thread</comments>
     </item>
     
   </channel>

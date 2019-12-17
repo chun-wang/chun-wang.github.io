@@ -817,7 +817,8 @@ figure.highlight,
   .codeblock .gutter {
     background: #f7f8f8;
     border-right: 1px solid #e6e6e6;
-    padding: 0.3em 15px; }
+    padding: 0.3em 15px;
+    user-select: none; }
   figure.highlight .code,
   .codeblock .code {
     padding: 0.3em 15px 0.3em 1em;
@@ -836,7 +837,8 @@ figure.highlight,
 .gist .line-number {
   font-family: Menlo, Consolas, monospace;
   font-size: 1em;
-  margin: 0 0 5px 0; }
+  margin: 0 0 5px 0;
+  user-select: none; }
 
 .highlight .comment {
   color: #969896; }

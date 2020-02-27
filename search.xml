@@ -255,9 +255,9 @@
       </categories>
       <tags>
         <tag>memory</tag>
-        <tag>valgrind</tag>
         <tag>memory leak</tag>
         <tag>memory damage</tag>
+        <tag>valgrind</tag>
       </tags>
   </entry>
   <entry>
@@ -273,16 +273,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[C&C++内存检查]]></title>
-    <url>%2F2015%2F03%2F30%2FC%26C%2B%2B%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5%2F</url>
-    <content type="text"><![CDATA[Valgrind(memcheck)valgrind通过监控进程的所有内存申请、释放及内存边界，能够有效发现内存问题； 优点： 功能全面，内存泄露、读写越界；除了memcheck还包括多线程互斥等各种工具； 出错后记录日志，便于一次性做全量测试，之后再来分析日志； 缺点： 有一定的误报率（和检测算法有关） 因为是虚拟运行环境方式，资源消耗较大；对于大型软件可能会降低软件运行效率； ###Address sanitizer GCC4.8开始自带的内存检查工具，通过编译选项直接在编译阶段对所有内存操作代码增加检查； 优点： 准确率100%，只要是检查出来的一定是问题 缺点： 只能检查内存(动态内存+栈)越界读写，无法检查内存泄露； 检测到问题时直接报错退出，必须修复后才能继续运行；这点对大量测试用例的批量执行不太友好，不过正是其100%的正确率，所以原则就是“检测出的问题你没理由不去修复”,简单说就是逼着你去修复。]]></content>
+    <title><![CDATA[Jenkins用户权限配置]]></title>
+    <url>%2F2015%2F07%2F03%2FJenkins%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[基本的权限配置基于角色的自动化权限管理要使用Jenkins做企业级CI部署，一个重要的事情就是如何做好用户权限管理，而Jenkins本身提供的权限管理比较简单，无法满足复杂的场景；一个典型的问题就是：jenkins自带的权限管理多数是直接通过管理员手工添加对应用户来实现的，这就导致管理员有很大的工作量。在权限管理方面，如果能做到下面这几点，就基本能满足大部分需要： 所有用户有查看的权限 登录用户可以查看他人的项目，以及新建项目的权限 项目新建者自动成为项目OWNER，OWNER具有本项目的管理权限 管理员可以直接设置权限 为了实现上述权限管理功能，我们引入两个插件：Role Strategy Plugin、Ownership Plugin 安装上述两个插件后，到系统管理界面进入Configure Global Security在Authorization项中会多出一个权限管理方式“Role-Based Strategy”，如下图所示: 之后在系统管理界面进入角色以及权限设置Manage and Assign Roles 配置说明： Manage Roles: 管理和增删权限策略(创建不同权限对应的角色) Assign Roles: 配置用户权限（给账号分配角色） Role Strategy Macros: 权限配置过程中用到的特殊角色宏 管理用户权限角色（Manage Roles）]]></content>
       <categories>
-        <category>Develop</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>C/C++</tag>
-        <tag>memory</tag>
-        <tag>valgrind</tag>
+        <tag>jenkins</tag>
+        <tag>持续集成</tag>
       </tags>
   </entry>
   <entry>

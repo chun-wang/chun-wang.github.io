@@ -255,9 +255,9 @@
       </categories>
       <tags>
         <tag>memory</tag>
+        <tag>valgrind</tag>
         <tag>memory leak</tag>
         <tag>memory damage</tag>
-        <tag>valgrind</tag>
       </tags>
   </entry>
   <entry>
@@ -292,9 +292,9 @@
         <category>Develop</category>
       </categories>
       <tags>
+        <tag>C/C++</tag>
         <tag>memory</tag>
         <tag>valgrind</tag>
-        <tag>C/C++</tag>
       </tags>
   </entry>
   <entry>

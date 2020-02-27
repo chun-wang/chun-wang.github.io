@@ -255,9 +255,9 @@
       </categories>
       <tags>
         <tag>memory</tag>
+        <tag>valgrind</tag>
         <tag>memory leak</tag>
         <tag>memory damage</tag>
-        <tag>valgrind</tag>
       </tags>
   </entry>
   <entry>
@@ -282,6 +282,19 @@
       <tags>
         <tag>jenkins</tag>
         <tag>持续集成</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C&C++内存检查]]></title>
+    <url>%2F2015%2F03%2F30%2FC%26C%2B%2B%E5%86%85%E5%AD%98%E6%A3%80%E6%9F%A5%2F</url>
+    <content type="text"><![CDATA[Valgrind(memcheck)valgrind通过监控进程的所有内存申请、释放及内存边界，能够有效发现内存问题； 优点： 功能全面，内存泄露、读写越界；除了memcheck还包括多线程互斥等各种工具； 出错后记录日志，便于一次性做全量测试，之后再来分析日志； 缺点： 有一定的误报率（和检测算法有关） 因为是虚拟运行环境方式，资源消耗较大；对于大型软件可能会降低软件运行效率； ###Address sanitizer GCC4.8开始自带的内存检查工具，通过编译选项直接在编译阶段对所有内存操作代码增加检查； 优点： 准确率100%，只要是检查出来的一定是问题 缺点： 只能检查内存(动态内存+栈)越界读写，无法检查内存泄露； 检测到问题时直接报错退出，必须修复后才能继续运行；这点对大量测试用例的批量执行不太友好，不过正是其100%的正确率，所以原则就是“检测出的问题你没理由不去修复”,简单说就是逼着你去修复。]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>memory</tag>
+        <tag>valgrind</tag>
       </tags>
   </entry>
   <entry>

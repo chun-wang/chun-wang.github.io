@@ -8,8 +8,25 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>海纳百川 有容乃大</description>
-    <pubDate>Mon, 10 Feb 2020 04:21:46 GMT</pubDate>
+    <pubDate>Tue, 24 Mar 2020 12:17:37 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Beyond Compare自动化脚本</title>
+      <link>https://blog.springfavor.cn/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/</link>
+      <guid>https://blog.springfavor.cn/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/</guid>
+      <pubDate>Tue, 24 Mar 2020 12:11:45 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h5 id=&quot;命令样例&quot;&gt;&lt;a href=&quot;#命令样例&quot; class=&quot;headerlink&quot; title=&quot;命令样例&quot;&gt;&lt;/a&gt;命令样例&lt;/h5&gt;&lt;p&gt;windows下使用&lt;code&gt;bcompare.exe&lt;/code&gt;,Linux下可执行文件为&lt;code&gt;bcompare
+        
+      
+      </description>
+      
+      <comments>https://blog.springfavor.cn/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Docker安装和使用配置</title>
@@ -349,23 +366,6 @@
       </description>
       
       <comments>https://blog.springfavor.cn/2017/01/10/Git-Lfs/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>黑群晖配置</title>
-      <link>https://blog.springfavor.cn/2016/12/15/%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/</link>
-      <guid>https://blog.springfavor.cn/2016/12/15/%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/</guid>
-      <pubDate>Thu, 15 Dec 2016 15:25:07 GMT</pubDate>
-      <description>
-      
-        
-        
-          &lt;h3 id=&quot;引导下载&quot;&gt;&lt;a href=&quot;#引导下载&quot; class=&quot;headerlink&quot; title=&quot;引导下载&quot;&gt;&lt;/a&gt;引导下载&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[http://xpenology.me/downloads/](http://xpenology.me/d
-        
-      
-      </description>
-      
-      <comments>https://blog.springfavor.cn/2016/12/15/%E9%BB%91%E7%BE%A4%E6%99%96%E9%85%8D%E7%BD%AE/#disqus_thread</comments>
     </item>
     
   </channel>

@@ -5,71 +5,15 @@
 <p>SurfaceView, GLSurfaceView, SurfaceTexture 以及 TextureView 是 Android 当中名字比较绕，关系又比较密切的几个类。</p>
 </blockquote>
 <p>SurfaceView, GLSurfaceView, SurfaceTexture 以及 TextureView 是 Android 当中名字比较绕，关系又比较密切的几个类。本文基于 Android 5.0(Lollipop) 的代码理一下它们的基本原理，联系与区别。</p></div><p class="readmore"><a href="/2021/07/09/SurfaceView,%20TextureView,%20SurfaceTexture%20%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E8%BD%AC%EF%BC%89/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">Beyond Compare自动化脚本</a></h1><div class="post-meta">2020-03-24</div><div class="post-content">命令样例windows下使用bcompare.exe,Linux下可执行文件为bcompare
-12345678# 说明：# bcompare: beyond compare可执行文件# &quot;@/path/scripts.txt&quot;: 脚本路径，以`@`开头# &quot;/folder1&quot;：对应脚本内的参数一(%1)# &quot;/folder2&quot;：对应脚本内的参数二(%2)# &quot;output.html&quot;：对应脚本内的参数三(%3)bcompare &quot;@/path/scripts.txt&quot; &quot;/folder1&quot; &quot;/folder2&quot; &quot;output.html&quot;
-
-官方脚本配置项查看https://www.scootersoftware.com/v4help/index.html?scripting_reference.html
-官方脚本样例样例https://www.scootersoftware.com/v4help/index.html?sample_scripts.html
-脚本样例1234567891011criteria rules-based follow-symlinksload %1 %2filter &quot;-.git/;-.repo/&quot;expand allselect all.filescompare rules-basedcollapse allfolder-report &amp;layout:side-by-side options:display-all,column-timestamp,column-size,column-attributes &amp;title:report-title &amp;output-to:%3 output-options:html-color</div><p class="readmore"><a href="/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2020/01/26/Docker%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/">Docker安装和使用配置</a></h1><div class="post-meta">2020-01-26</div><div class="post-content"><h4 id="安装指导："><a href="#安装指导：" class="headerlink" title="安装指导："></a>安装指导：</h4><p>关于Docker Engine:</p>
+12345678# 说明：# bcompare: beyond compare可执行文件# &quot;@/path/scripts.txt&quot;: 脚本路径，以`@`开头# &quot;/folder1&quot;：对应脚本内的参数一(%1)# &quot;/folder2&quot;：对应脚本...</div><p class="readmore"><a href="/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2020/01/26/Docker%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/">Docker安装和使用配置</a></h1><div class="post-meta">2020-01-26</div><div class="post-content"><h4 id="安装指导："><a href="#安装指导：" class="headerlink" title="安装指导："></a>安装指导：</h4><p>关于Docker Engine:</p>
 <p><a href="https://docs.docker.com/install/">https://docs.docker.com/install/</a></p>
 <p>ubuntu安装docker:</p>
 <p><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p></div><p class="readmore"><a href="/2020/01/26/Docker%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/12/19/%E5%9C%A8Mac%E4%B8%8A%E5%88%B6%E4%BD%9Cubuntu-USB%E5%AE%89%E8%A3%85%E7%9B%98/">在Mac上制作ubuntu USB安装盘</a></h1><div class="post-meta">2019-12-19</div><div class="post-content">1. 制作系统img12# 转换命令$ hdiutil convert -format UDRW -o ubuntu-18-04.img ubuntu-18.04-desktop-amd64.iso
 
 2. 查看U盘挂载的目录比如我这边挂载的路径是 &#x2F;dev&#x2F;disk2
-1234567$ diskutil list .../dev/disk2 (external, physical):   #:                       TYPE NAME                    SIZE       IDENTIFIER   0:     FDisk_partition_scheme                        *31.7 GB    disk2   1:             Windows_FAT_32 NICE                    31.0 GB    disk2s1...
-
-3. 取消 U盘 的挂载（不要拔掉）1$ diskutil unmountDisk /dev/disk2
-
-4. 写入 U盘**注意:**此处是 rdisk2而不是 disk2，执行命令后大约等待个10分钟左右，中途不管终端是否有显示，不要直接ctrl + C退出或拔出U盘。
-1$ sudo dd if=ubuntu-18-04.img.dmg of=/dev/rdisk2 bs=1m</div><p class="readmore"><a href="/2019/12/19/%E5%9C%A8Mac%E4%B8%8A%E5%88%B6%E4%BD%9Cubuntu-USB%E5%AE%89%E8%A3%85%E7%9B%98/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/12/17/%E4%BD%BF%E7%94%A8supervisor%E8%BF%9B%E8%A1%8C%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86/">使用supervisor进行后台服务管理</a></h1><div class="post-meta">2019-12-17</div><div class="post-content">介绍官方网址：http://supervisord.org
+1234567$ diskutil list .../dev/disk2 (external, physic...</div><p class="readmore"><a href="/2019/12/19/%E5%9C%A8Mac%E4%B8%8A%E5%88%B6%E4%BD%9Cubuntu-USB%E5%AE%89%E8%A3%85%E7%9B%98/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/12/17/%E4%BD%BF%E7%94%A8supervisor%E8%BF%9B%E8%A1%8C%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86/">使用supervisor进行后台服务管理</a></h1><div class="post-meta">2019-12-17</div><div class="post-content">介绍官方网址：http://supervisord.org
 Supervisor is a client&#x2F;server system that allows its users to monitor and control a number of processes on UNIX-like operating systems.
-It shares some of the same goals of programs like launchd, daemontools, and runit. Unlike some of these programs, it is not meant to be run as a substitute for init as “process id 1”. Instead it is meant to be used to control processes related to a project or a customer, and is meant to start like any other program at boot time.
-安装1sudo apt install supervisor
-
-启动服务
-1service supervisor start
-
-停止服务
-12345# 方式一service supervisor stop# 方式二supervisorctl shutdown
-
-使用SUPERVISOR查询帮助123456789# 帮助命令supervisorctl help# 查询结果default commands (type help &lt;topic&gt;):=====================================add    exit      open  reload  restart   start   tail   avail  fg        pid   remove  shutdown  status  update clear  maintail  quit  reread  signal    stop    version
-
-查询版本1supervisorctl version
-
-查询可操作的服务
-12345# 命令supervisorctl avail# 输出样例frps                             in use    auto      999:999
-
-重新加载配置文件12# 命令supervisorctl reread
-
-
-
-启动服务1234567891011# 启动指定服务supervisorctl start [name:配置文件中配置的名字]# 启动所有服务supervisorctl start all# 启动进程组supervisorctl start &lt;gname&gt;:*# 同时启动多个服务supervisorctl start &lt;name1&gt; &lt;name2&gt;
-
-停止服务1234567891011# 停止指定服务supervisorctl stop [name:配置文件中配置的名字]# 停止所有服务supervisorctl stop all# 停止进程组supervisorctl stop &lt;gname&gt;:*# 同时停止多个服务supervisorctl stop &lt;name1&gt; &lt;name2&gt;
-
-查询服务状态12345# 查询命令supervisorctl status# 输出结果:frp                              RUNNING   pid 17601, uptime 0:05:48
-
-配置配置文件路径123456# 配置文件根路径/etc/supervisor/# 根配置文件, 一般不做修改/etc/supervisor/supervisord.conf# 子配置文件路径，新增应用配置放置到此路径, 根配置文件会引用(include)该目录下的所有配置文件/etc/supervisor/conf.d/
-
-手动生成配置文件如果安装后的版本没有自动创建上述目录和配置文件，也可以自行手动创建
-12mkdir -p /etc/supervisor/conf.decho_supervisord_conf &gt; /etc/supervisor/supervisord.conf
-
-在配置文件末尾修改引用自定义路径
-12[include]files = /etc/supervisor/conf.d/*.conf
-
-
-
-配置文件规则123456789[program:frp] ;程序名称:终端控制时需要的标识command=frps ; 运行程序的命令directory=/root/frp/ ; 命令执行的目录autorestart=true ; 程序意外退出是否自动重启stderr_logfile=/var/log/frps.err.log ; 错误日志文件stdout_logfile=/var/log/frps.out.log ; 输出日志文件environment=ENVIRONMENT=Production ; 进程环境变量user=root ; 进程执行的用户身份stopsignal=INT ; 进程停止信号
-
-frps配置样例新增frps的配置文件
-1touch /etc/supervisor/conf.d/frps.conf
-
-文件内容
-12345[program:frps]command = /root/frp/frps -c /root/frp/frps.iniautostart = truestderr_logfile=/var/log/frps.err.log stdout_logfile=/var/log/frps.out.log
-
-重启supervisor服务
-1service supervisor restart
-
-</div><p class="readmore"><a href="/2019/12/17/%E4%BD%BF%E7%94%A8supervisor%E8%BF%9B%E8%A1%8C%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/">Mac使用ffmpeg转换DTS音频</a></h1><div class="post-meta">2019-11-09</div><div class="post-content">安装Homebrew（已经安装可跳过）操作：
+It shares some of the same go...</div><p class="readmore"><a href="/2019/12/17/%E4%BD%BF%E7%94%A8supervisor%E8%BF%9B%E8%A1%8C%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/">Mac使用ffmpeg转换DTS音频</a></h1><div class="post-meta">2019-11-09</div><div class="post-content">安装Homebrew（已经安装可跳过）操作：
 
 启动终端程序(应用程序 －&gt; 实用工具 －&gt; 终端 ）
 安装brew.
@@ -78,35 +22,8 @@ frps配置样例新增frps的配置文件
 1ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
 
 安装ffmpeg安装命令：
-1brew install ffmpeg
-
-使用ffmpeg转换DTS音频
-转为双音轨的苹果无损格式：
-1for file in *.wav; do name=$(echo $file | sed &quot;s/\\.wav//g&quot;); ffmpeg -acodec dts -i &quot;$name&quot;.wav -vn -sn -ac 2 -acodec alac &quot;$name&quot;.m4a; done
-
-转换完毕后，将同目录下找到.m4a 的文件，导入iTunes.
-
-转为保留全部音轨（6.1）的 flac 格式：
-1for file in *.wav; do name=$(echo $file | sed &quot;s/\\.wav//g&quot;); ffmpeg -acodec dts -i &quot;$name&quot;.wav -vn -sn -acodec flac &quot;$name&quot;.flac; done
-
-</div><p class="readmore"><a href="/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/03/24/librdkafka%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/">librdkafka编译构建</a></h1><div class="post-meta">2019-03-24</div><div class="post-content">版本获取https://github.com/edenhill/librdkafka/releases
-构建命令12345export LIBS=&quot;-lssl -lcrypto&quot;export CPATH=/opt/tools/openssl/include./configure --prefix=/opt/tools/librdkafka --LDFLAGS=&quot;-L/opt/tools/openssl/lib&quot; --mbits=32makemake install
-
-支持32位1--mbits=32
-
-支持SSL官方说明：https://github.com//edenhill/librdkafka/wiki/Using-SSL-with-librdkafka
-有时候项目中会采用自定义的库目录放置openssl，如果有类似诉求，可以做如下设置
-
-添加openssl头文件包含路径(其中OPENSSL__INCLUDE为头文件路径)
-1export CPATH=$CPATH:$OPENSSL_INCLUDE
-
-configure时添加LDFLAGS参数或将LDFLAGS导出为环境变量(其中OPENSSL_LIB_PATH为库所在路径)，以下方法二选一即可。
-12a. --LDFLAGS=&quot;-L$OPENSSL_LIB_PATH&quot;b. export LDFLAGS=&quot;_L$OPENSSL_LIB_PATH&quot;
-
-当前获取的librdkafka包在使用openssl时存在一个BUG，由于SSL库链接顺序问题导致example里面的代码链接出错，具体解决情况可以跟踪官方ISSUE：https://github.com//edenhill/librdkafka/issues/1576    这里给出一个规避方案：在编译时配置LIBS环境变量，强制覆盖SSL库的顺序
-1export LIBS=&quot;-lssl -lcrypto&quot;
-
-</div><p class="readmore"><a href="/2019/03/24/librdkafka%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/01/30/IntelliJ%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">IntelliJ基本配置</a></h1><div class="post-meta">2019-01-30</div><div class="post-content">统一文件编码(UTF-8)1Settings -&gt; Editor -&gt; File Encodings
+1brew insta...</div><p class="readmore"><a href="/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/03/24/librdkafka%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/">librdkafka编译构建</a></h1><div class="post-meta">2019-03-24</div><div class="post-content">版本获取https://github.com/edenhill/librdkafka/releases
+构建命令12345export LIBS=&quot;-lssl -lcrypto&quot;export CPATH=/opt/tools/openssl/include./configure --prefix=/opt/tools/librdkafka --LDFLAGS=&quot;-L/...</div><p class="readmore"><a href="/2019/03/24/librdkafka%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/01/30/IntelliJ%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">IntelliJ基本配置</a></h1><div class="post-meta">2019-01-30</div><div class="post-content">统一文件编码(UTF-8)1Settings -&gt; Editor -&gt; File Encodings
 
 
 行宽及指示线配置1Settings -&gt; Editor -&gt; Code Style -&gt; Hard wrap at
@@ -115,27 +32,7 @@ configure时添加LDFLAGS参数或将LDFLAGS导出为环境变量(其中OPENSSL_
 自动删除行尾空格1Settings -&gt; Editor -&gt; General -&gt; Other
 
 
-文件版权头配置(copyright)1Settings -&gt; Editor -&gt; Copyright -&gt; Copyright Profiles
-
-版权信息基本格式：
-1Copyright (c) $today.year,上海DEMO有限公司网络应用事业部. All rights reserved.
-
-步骤一：创建版权信息模板
-
-步骤二：配置使用刚创建的版权信息模板
-
-安装配置(CheckStyle-IDEA)1File-&gt;settings-&gt;plugin-&gt;搜索插件:CheckStyle-IDEA-&gt;install
-
-
-配置checkstyle
-
-自动格式化配置(Eclipse Code Formatter)1File-&gt;settings-&gt;plugin-&gt;搜索插件:Eclipse Code Formatter-IDEA-&gt;install
-
-
-抑制自动import使用通配符1settings-&gt;Editor-&gt;Code Style-&gt;Java-&gt;Imports-&gt;Use single class import
-
-
-</div><p class="readmore"><a href="/2019/01/30/IntelliJ%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/">布隆过滤器(BloomFilter)</a></h1><div class="post-meta">2019-01-26</div><div class="post-content">常见问题
+文件版权头配置(copyr...</div><p class="readmore"><a href="/2019/01/30/IntelliJ%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/">布隆过滤器(BloomFilter)</a></h1><div class="post-meta">2019-01-26</div><div class="post-content">常见问题
 编辑器软件需要检查一个英语单词是否拼写正确
 广告、新闻推荐时判断一篇文章是否已经推荐过
 邮箱垃圾邮件过滤
@@ -147,36 +44,7 @@ configure时添加LDFLAGS参数或将LDFLAGS导出为环境变量(其中OPENSSL_
 Map (红黑树)
 哈希表
 
-对于简单的少量数据处理，上述数据结构基本能够满足要求。但随着互联网不断的发展，带给我们最大的挑战就是当数据量呈现爆发增长时，如何在效率、存储上获取最优的解决方案。设想如果需要处理、匹配的数据量达到百万、千万时，不论是常规的Map还是性能优异的Hash表，都将面对检索性能极速下降、存储量持续上升的问题。这时候我们就需要用到布隆过滤器(BloomFilter)。
-背景布隆过滤器由巴顿.布隆于一九七零年提出，可以用来判断一个元素是否出现在给定集合中的重要工具，具有快速，比哈希表更节省空间等优点，而缺点在于有一定的误识别率（false-positive，假阳性），它可能会把不是集合内的元素判定为存在于集合内，不过这样的概率相当小，在大部分的生产环境中是可以接受的。
-基本特性
-一个很长的二进制向量(通常直接采用位数组)
-一系列随机函数 (哈希)
-综合空间效率和查询效率高
-有一定的误判率（也可以说是通过引入误判率这一维度，以便在效率和空间上获得最优）
-
-原理如下图所示，S集合中有n个元素，利用k个哈希函数，将S中的每个元素映射到一个长度为m的位（bit）数组B中不同的位置上，这些位置上的二进制数均置为1，如果待检测的元素经过这k个哈希函数的映射后，发现其k个位置上的二进制数不全是1，那么这个元素一定不在集合S中，反之，该元素可能是S中的某一个元素（参考1）；
-
-最优判率由上面的算法介绍，和布隆过滤器判率相关的点有如下两个：
-
-容器数组长度(m);
-哈希函数个数(k);
-
-容器数组越长，可以存储的差异数据越多，但占用的存储空间也就越多。当使用的哈希函数个数越多，生成的结果越能精确区分原始数据，但随之而来的问题则是容器数组填充的速度也会变快。
-为了估算出k和m的值，在构造一个布隆过滤器时，需要传入两个参数，即可以接受的误判率fpp和元素总个数n（不一定完全精确）。至于参数估计的方法，有兴趣的同学可以参考维基英文页面，下面直接给出公式：
-
-哈希函数的要求尽量满足平均分布，这样既降低误判发生的概率，又可以充分利用bit数组的空间；
-根据论文《Less Hashing, Same Performance: Building a Better Bloom Filter》提出的一个技巧，可以用2个哈希函数来模拟k个哈希函数，即gi(x) &#x3D; h1(x) + ih2(x) ，其中0&lt;&#x3D;i&lt;&#x3D;k-1； 
-在吴军博士的《数学之美》一书中展示了不同情况下的误判率，例如，假定一个元素用16位比特，8个哈希函数，那么假阳性的概率是万分之五，这已经相当小了。
-
-支持的操作常规的布隆过滤器只支持如下两种操作：
-
-判断指定数据可能存在于集合中
-往集合中添加数据
-
-删除数据？上面说了，一般常规的布隆过滤器只能添加数据，不能删除数据。为了支持删除操作，常见的一种做法是通过将位数组扩展位值数组，比如采用int数组代替bit位方式实现对每一「格」数据的计算，删除时至少减少计数即可。
-但这同样会有另外一个问题，hash本身就存在冲撞的情况，因此删除的时候如何确定：你当前删除的数据就是前面添加的数据？比如往布隆过滤器添加了数据A，存在数据B在某个哈希映射下结果和A是相同的或B的哈希结果是A的子集，那么使用B其实是可以删除(或部分删除)A存储的结果的。
-扩容常见布隆过滤器实现</div><p class="readmore"><a href="/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/">Linux目标文件</a></h1><div class="post-meta">2018-12-22</div><div class="post-content">文件格式解析参考https://docs.oracle.com/cd/E19253-01/819-7050/6n918j8nn/index.html
+对于简单的少量数据处理，上述数据结构基本能够满足要求。但随着互联网不断的发展，带给我们最大的挑战就是当数据量呈现爆发增长时，如何在效率、存储上获取最优的解决方案。设想如果需要处理、匹配的数据量达到百万、千...</div><p class="readmore"><a href="/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/">Linux目标文件</a></h1><div class="post-meta">2018-12-22</div><div class="post-content">文件格式解析参考https://docs.oracle.com/cd/E19253-01/819-7050/6n918j8nn/index.html
 常用工具
 
 
@@ -202,19 +70,4 @@ nm
 
 
 size
-列出目标文件中节的名字和大小
-
-
-readily
-显示一个目标文件的完整结构，包括ELF头中编码的所有信息，包含SIZE和NM的功能
-
-
-bjdump
-所有二进制工具之母，能够显示一个目标文件中所有的信息，他最大的uzoyong是反汇编.text节中的二进制指令
-
-
-ldd
-列出一个可执行文件在运行时所需要的共享库
-
-
-</div><p class="readmore"><a href="/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/">阅读全文</a></p></div><nav class="page-navigator"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://blog.techpoetry.cn"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E6%84%9F/">随感</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Thread/" style="font-size: 15px;">Thread</a> <a href="/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/tags/tools/" style="font-size: 15px;">tools</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/regexp/" style="font-size: 15px;">regexp</a> <a href="/tags/jenkins/" style="font-size: 15px;">jenkins</a> <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" style="font-size: 15px;">持续集成</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/memory/" style="font-size: 15px;">memory</a> <a href="/tags/valgrind/" style="font-size: 15px;">valgrind</a> <a href="/tags/memory-leak/" style="font-size: 15px;">memory leak</a> <a href="/tags/memory-damage/" style="font-size: 15px;">memory damage</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JDK/" style="font-size: 15px;">JDK</a> <a href="/tags/Maven/" style="font-size: 15px;">Maven</a> <a href="/tags/Synology/" style="font-size: 15px;">Synology</a> <a href="/tags/Vmware/" style="font-size: 15px;">Vmware</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/committer/" style="font-size: 15px;">committer</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 15px;">架构</a> <a href="/tags/Jitsi/" style="font-size: 15px;">Jitsi</a> <a href="/tags/SFU/" style="font-size: 15px;">SFU</a> <a href="/tags/WebRTC/" style="font-size: 15px;">WebRTC</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 15px;">软件工程</a> <a href="/tags/SIGSEGV/" style="font-size: 15px;">SIGSEGV</a> <a href="/tags/SSR/" style="font-size: 15px;">SSR</a> <a href="/tags/%E7%BF%BB%E5%A2%99/" style="font-size: 15px;">翻墙</a> <a href="/tags/shadowsock/" style="font-size: 15px;">shadowsock</a> <a href="/tags/iperf/" style="font-size: 15px;">iperf</a> <a href="/tags/%E5%B8%A6%E5%AE%BD/" style="font-size: 15px;">带宽</a> <a href="/tags/%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;">设计</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 15px;">负载均衡</a> <a href="/tags/elf/" style="font-size: 15px;">elf</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/object/" style="font-size: 15px;">object</a> <a href="/tags/BloomFilter/" style="font-size: 15px;">BloomFilter</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 15px;">大数据</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/IntelliJ/" style="font-size: 15px;">IntelliJ</a> <a href="/tags/ddns/" style="font-size: 15px;">ddns</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/beyond-compare/" style="font-size: 15px;">beyond compare</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/07/09/SurfaceView,%20TextureView,%20SurfaceTexture%20%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E8%BD%AC%EF%BC%89/">SurfaceView, TextureView, SurfaceTexture 等的区别（转）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">Beyond Compare自动化脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/26/Docker%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/">Docker安装和使用配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/%E5%9C%A8Mac%E4%B8%8A%E5%88%B6%E4%BD%9Cubuntu-USB%E5%AE%89%E8%A3%85%E7%9B%98/">在Mac上制作ubuntu USB安装盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/%E4%BD%BF%E7%94%A8supervisor%E8%BF%9B%E8%A1%8C%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86/">使用supervisor进行后台服务管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/">Mac使用ffmpeg转换DTS音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/24/librdkafka%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/">librdkafka编译构建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/IntelliJ%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">IntelliJ基本配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/">布隆过滤器(BloomFilter)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/">Linux目标文件</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/chun-wang" title="Github" target="_blank">Github</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/." rel="nofollow">Spring Favor.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.1"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.1"></script></div></body></html>
+列出目标...</div><p class="readmore"><a href="/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/">阅读全文</a></p></div><nav class="page-navigator"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://blog.techpoetry.cn"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E6%84%9F/">随感</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Thread/" style="font-size: 15px;">Thread</a> <a href="/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/tags/tools/" style="font-size: 15px;">tools</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/regexp/" style="font-size: 15px;">regexp</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/memory/" style="font-size: 15px;">memory</a> <a href="/tags/valgrind/" style="font-size: 15px;">valgrind</a> <a href="/tags/jenkins/" style="font-size: 15px;">jenkins</a> <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" style="font-size: 15px;">持续集成</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JDK/" style="font-size: 15px;">JDK</a> <a href="/tags/memory-leak/" style="font-size: 15px;">memory leak</a> <a href="/tags/memory-damage/" style="font-size: 15px;">memory damage</a> <a href="/tags/Maven/" style="font-size: 15px;">Maven</a> <a href="/tags/Synology/" style="font-size: 15px;">Synology</a> <a href="/tags/Vmware/" style="font-size: 15px;">Vmware</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/committer/" style="font-size: 15px;">committer</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 15px;">架构</a> <a href="/tags/Jitsi/" style="font-size: 15px;">Jitsi</a> <a href="/tags/SFU/" style="font-size: 15px;">SFU</a> <a href="/tags/WebRTC/" style="font-size: 15px;">WebRTC</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 15px;">软件工程</a> <a href="/tags/SIGSEGV/" style="font-size: 15px;">SIGSEGV</a> <a href="/tags/iperf/" style="font-size: 15px;">iperf</a> <a href="/tags/%E5%B8%A6%E5%AE%BD/" style="font-size: 15px;">带宽</a> <a href="/tags/%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;">设计</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 15px;">负载均衡</a> <a href="/tags/SSR/" style="font-size: 15px;">SSR</a> <a href="/tags/%E7%BF%BB%E5%A2%99/" style="font-size: 15px;">翻墙</a> <a href="/tags/shadowsock/" style="font-size: 15px;">shadowsock</a> <a href="/tags/elf/" style="font-size: 15px;">elf</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/object/" style="font-size: 15px;">object</a> <a href="/tags/BloomFilter/" style="font-size: 15px;">BloomFilter</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 15px;">大数据</a> <a href="/tags/IntelliJ/" style="font-size: 15px;">IntelliJ</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/ddns/" style="font-size: 15px;">ddns</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/beyond-compare/" style="font-size: 15px;">beyond compare</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/07/09/SurfaceView,%20TextureView,%20SurfaceTexture%20%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E8%BD%AC%EF%BC%89/">SurfaceView, TextureView, SurfaceTexture 等的区别（转）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">Beyond Compare自动化脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/26/Docker%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/">Docker安装和使用配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/%E5%9C%A8Mac%E4%B8%8A%E5%88%B6%E4%BD%9Cubuntu-USB%E5%AE%89%E8%A3%85%E7%9B%98/">在Mac上制作ubuntu USB安装盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/%E4%BD%BF%E7%94%A8supervisor%E8%BF%9B%E8%A1%8C%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86/">使用supervisor进行后台服务管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/">Mac使用ffmpeg转换DTS音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/24/librdkafka%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/">librdkafka编译构建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/IntelliJ%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">IntelliJ基本配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/">布隆过滤器(BloomFilter)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/">Linux目标文件</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/chun-wang" title="Github" target="_blank">Github</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/." rel="nofollow">Spring Favor.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.1"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.1"></script></div></body></html>

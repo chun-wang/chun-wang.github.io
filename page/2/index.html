@@ -3,222 +3,21 @@
 支持单中心多videobridge，实现媒体流的负载均衡和能力扩展。
 解决Jicofo默认的在线状态检查检测不到videobridge快速上下线问题。
 
-说明：Jicofo默认检查节点状态是定时查询xmpp上在线的Component，如果videobridge发生重启，首先会触发健康检查失败，Jicofo会感知videobridge下线。但如果videibridge在检查周期之前重新上线，检查器内保存的在线节点并不会有变化，因此也不会上报bridge上线的事件。
-官方参考想要了解最新的配置方法，可以参考Jitsi官方的配置文档：
-https://github.com/jitsi/jicofo/blob/master/doc/load_balancing.md
-Prosody订阅发布能力修改配置文件/etc/prosody/conf.d/example.cn.cfg.lua:
-
-在modules_enabled中增加”pubsub”模块，使能订阅发布能力
-增加admins设置，在里面加上需要订阅、发布的videobridge(这样JVB才有权限创建PubSub节点)
-如果有多个videobridge，则一一在配置文件内添加即可
-
-1234567891011121314VirtualHost &quot;example.cn&quot;        -- 中间省略        modules_enabled = &#123;            &quot;bosh&quot;;            &quot;pubsub&quot;;            &quot;ping&quot;; -- Enable mod_ping        &#125;                admins = &#123;            &quot;jitsi-videobridge.example.cn&quot;        &#125;Component &quot;jitsi-videobridge.example.cn&quot;    component_secret = &quot;65EVA9o8&quot;
-
-Videobridge发布在线状态修改配置文件/etc/jitsi/videobridge/sip-communicator.properties，其中PUBSUB_SERVICE为prosody上用于发布状态的Virtualhost，PUBSUB_NODE为状态发布到的节点名称，这两个字段必须和后面Jicofo的配置保持一致。
-1234org.jitsi.videobridge.ENABLE_STATISTICS=trueorg.jitsi.videobridge.STATISTICS_TRANSPORT=pubsuborg.jitsi.videobridge.PUBSUB_SERVICE=example.comorg.jitsi.videobridge.PUBSUB_NODE=sharedStatsNode
-
-Jicofo订阅在线状态修改配置文件/etc/jitsi/jicofo/sip-communicator.properties，这两项配置需要和上述videibridge内的配置保持一致，这样Jicofo才能正确订阅到videobridge发布的状态信息。
-12org.jitsi.focus.pubsub.ADDRESS=example.comorg.jitsi.jicofo.STATS_PUBSUB_NODE=sharedStatsNode
-
-</div><p class="readmore"><a href="/2018/12/15/Jitsi-videobridge%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/12/07/%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1%EF%BC%88%E8%BD%AC%EF%BC%89/">架构师技能图谱（转）</a></h1><div class="post-meta">2018-12-07</div><div class="post-content">
+说明：Jicofo默认检查节点状态是定时查询xmpp上在线的Component，如果videobridge发生重启，首先会触发健康检查失败，Jicofo会感知videobridge下线。但如果videibridge在...</div><p class="readmore"><a href="/2018/12/15/Jitsi-videobridge%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/12/07/%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1%EF%BC%88%E8%BD%AC%EF%BC%89/">架构师技能图谱（转）</a></h1><div class="post-meta">2018-12-07</div><div class="post-content">
 </div><p class="readmore"><a href="/2018/12/07/%E6%9E%B6%E6%9E%84%E5%B8%88%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1%EF%BC%88%E8%BD%AC%EF%BC%89/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/12/06/%E4%BD%BF%E7%94%A8iperf%E6%B5%8B%E8%AF%95%E6%9C%BA%E5%99%A8%E9%97%B4%E5%B8%A6%E5%AE%BD/">使用iperf测试机器间带宽</a></h1><div class="post-meta">2018-12-06</div><div class="post-content">背景在做环境部署或测试时，经常会想知道两台机器间的最大网络带宽。最简单的办法就是直接在两台机器间拷贝一个大文件，通过拷贝速度就可以大致估算网络带宽，不过这一方法往往不够准确。借助iperf工具则可以简单、准确的完成这一工作。
 安装iperf3如果使用的时ubuntu系统，可以直接通过apt安装
 1sudo apt-get install iperf3
 
-也可以到官网手工下载安装包安装最新版本，基本提供了常用的各类系统的版本：
-https://iperf.fr/iperf-download.php
-以下测试命令均使用了iperf3版本
-iperf命令12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455Usage: iperf3 [-s|-c host] [options]       iperf3 [-h|--help] [-v|--version]Server or Client:  -p, --port      #         server port to listen on/connect to  -f, --format    [kmgKMG]  format to report: Kbits, Mbits, KBytes, MBytes  -i, --interval  #         seconds between periodic bandwidth reports  -F, --file name           xmit/recv the specified file  -A, --affinity n/n,m      set CPU affinity  -B, --bind      &lt;host&gt;    bind to a specific interface  -V, --verbose             more detailed output  -J, --json                output in JSON format  --logfile f               send output to a log file  -d, --debug               emit debugging output  -v, --version             show version information and quit  -h, --help                show this message and quitServer specific:  -s, --server              run in server mode  -D, --daemon              run the server as a daemon  -I, --pidfile file        write PID file  -1, --one-off             handle one client connection then exitClient specific:  -c, --client    &lt;host&gt;    run in client mode, connecting to &lt;host&gt;  -u, --udp                 use UDP rather than TCP  -b, --bandwidth #[KMG][/#] target bandwidth in bits/sec (0 for unlimited)                            (default 1 Mbit/sec for UDP, unlimited for TCP)                            (optional slash and packet count for burst mode)  -t, --time      #         time in seconds to transmit for (default 10 secs)  -n, --bytes     #[KMG]    number of bytes to transmit (instead of -t)  -k, --blockcount #[KMG]   number of blocks (packets) to transmit (instead of -                                                      t or -n)  -l, --len       #[KMG]    length of buffer to read or write                            (default 128 KB for TCP, 8 KB for UDP)  --cport         &lt;port&gt;    bind to a specific client port (TCP and UDP, default                                                      : ephemeral port)  -P, --parallel  #         number of parallel client streams to run  -R, --reverse             run in reverse mode (server sends, client receives)  -w, --window    #[KMG]    set window size / socket buffer size  -C, --congestion &lt;algo&gt;   set TCP congestion control algorithm (Linux and Free                                                      BSD only)  -M, --set-mss   #         set TCP/SCTP maximum segment size (MTU - 40 bytes)  -N, --no-delay            set TCP/SCTP no delay, disabling Nagle&#x27;s Algorithm  -4, --version4            only use IPv4  -6, --version6            only use IPv6  -S, --tos N               set the IP &#x27;type of service&#x27;  -L, --flowlabel N         set the IPv6 flow label (only supported on Linux)  -Z, --zerocopy            use a &#x27;zero copy&#x27; method of sending data  -O, --omit N              omit the first n seconds  -T, --title str           prefix every output line with this string  --get-server-output       get results from server  --udp-counters-64bit      use 64-bit counters in UDP test packets  --no-fq-socket-pacing     disable fair-queuing based socket pacing                            (Linux only)[KMG] indicates options that support a K/M/G suffix for kilo-, mega-, or giga-iperf3 homepage at: http://software.es.net/iperf/Report bugs to:     https://github.com/esnet/iperf
-
-启动iperf服务端直接在命令行下执行iperf3 -s即可启动服务端，默认监听的地址是0.0.0.0:5201.如果要测试AWS、阿里云等服务器，需要配置相关端口映射
-12345$ iperf3 -s------------------------------------------------------------Server listening on TCP port 5001TCP window size: 85.3 KByte (default)------------------------------------------------------------
-
-启动iperf客户端启动客户端并指定连接到刚才的服务端地址，就可以启动速度测试了
-1234567891011121314151617181920$ iperf3 -c 10.247.109.99Connecting to host 10.247.109.99, port 5201[  4] local 10.37.127.241 port 58107 connected to 10.247.109.99 port 5201[ ID] Interval           Transfer     Bandwidth[  4]   0.00-1.01   sec  1.75 MBytes  14.6 Mbits/sec[  4]   1.01-2.01   sec  2.75 MBytes  23.1 Mbits/sec[  4]   2.01-3.01   sec  2.25 MBytes  18.8 Mbits/sec[  4]   3.01-4.01   sec  2.62 MBytes  22.0 Mbits/sec[  4]   4.01-5.00   sec  1.00 MBytes  8.45 Mbits/sec[  4]   5.00-6.00   sec  2.38 MBytes  19.9 Mbits/sec[  4]   6.00-7.00   sec  2.62 MBytes  22.0 Mbits/sec[  4]   7.00-8.00   sec  2.12 MBytes  17.8 Mbits/sec[  4]   8.00-9.00   sec  1.88 MBytes  15.7 Mbits/sec[  4]   9.00-10.00  sec  2.88 MBytes  24.1 Mbits/sec- - - - - - - - - - - - - - - - - - - - - - - - -[ ID] Interval           Transfer     Bandwidth[  4]   0.00-10.00  sec  22.2 MBytes  18.7 Mbits/sec                  sender[  4]   0.00-10.00  sec  22.1 MBytes  18.5 Mbits/sec                  receiveriperf Done.
-
-可以看到连接的上下行速率分别是18.7Mbps和18.5Mbps。
-</div><p class="readmore"><a href="/2018/12/06/%E4%BD%BF%E7%94%A8iperf%E6%B5%8B%E8%AF%95%E6%9C%BA%E5%99%A8%E9%97%B4%E5%B8%A6%E5%AE%BD/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/12/02/SSR%E9%83%A8%E7%BD%B2/">SSR部署</a></h1><div class="post-meta">2018-12-02</div><div class="post-content">租一个国外的服务器当前使用的服务器厂商是Vultr的，部分服务器在国内被屏蔽，建议采用东京区的。也可以多创建几个试下。
-一键部署SSR服务端1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh
-
-SSR配置创建Snapshot使用snapshotShadowsock客户端下载部署完服务器，还必须要有对应的客户端才能把SSR用起来。当前国内基本已经把shadowsocks的下载路径都封了，可以通过到Github上的Shadowsocks社区下载需要的版本：
-shadowsocks社区
-下面是常用的几个版本链接：
-
-
-
-软件名称
-系统
-下载链接
-
-
-
-ShadowsocksX-NG
-OSX
-https://github.com/shadowsocks/ShadowsocksX-NG/releases
-
-
-shadowsocks-windows
-windows
-https://github.com/shadowsocks/shadowsocks-windows/releases
-
-
-shadowsocks-android
-android
-https://github.com/shadowsocks/shadowsocks-android/releases
-
-
-</div><p class="readmore"><a href="/2018/12/02/SSR%E9%83%A8%E7%BD%B2/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/12/02/Linux%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Linux异常处理</a></h1><div class="post-meta">2018-12-02</div><div class="post-content">从libSegFault.so说起123456env SEGFAULT_SIGNALS=&quot;abrt segv&quot;LD_PRELOAD=/lib/libSegFault.so someapp  https://sourceware.org/git/?p=glibc.git;a=blob;f=debug/segfault.c;hb=HEAD </div><p class="readmore"><a href="/2018/12/02/Linux%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/11/17/%E5%B7%A5%E7%A8%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">工程驱动的软件开发</a></h1><div class="post-meta">2018-11-17</div><div class="post-content">好的工程要能够反向推动架构的改进
+也可以到官网手工下载安装包安装最新版本，基本...</div><p class="readmore"><a href="/2018/12/06/%E4%BD%BF%E7%94%A8iperf%E6%B5%8B%E8%AF%95%E6%9C%BA%E5%99%A8%E9%97%B4%E5%B8%A6%E5%AE%BD/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/12/02/SSR%E9%83%A8%E7%BD%B2/">SSR部署</a></h1><div class="post-meta">2018-12-02</div><div class="post-content">租一个国外的服务器当前使用的服务器厂商是Vultr的，部分服务器在国内被屏蔽，建议采用东京区的。也可以多创建几个试下。
+一键部署SSR服务端1wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;...</div><p class="readmore"><a href="/2018/12/02/SSR%E9%83%A8%E7%BD%B2/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/12/02/Linux%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Linux异常处理</a></h1><div class="post-meta">2018-12-02</div><div class="post-content">从libSegFault.so说起123456env SEGFAULT_SIGNALS=&quot;abrt segv&quot;LD_PRELOAD=/lib/libSegFault.so someapp  https://sourceware.org/git/?p=glibc.git;a=blob;f=debug/segfault.c;hb=HEAD </div><p class="readmore"><a href="/2018/12/02/Linux%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/11/17/%E5%B7%A5%E7%A8%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">工程驱动的软件开发</a></h1><div class="post-meta">2018-11-17</div><div class="post-content">好的工程要能够反向推动架构的改进
 目录结构和软件架构
 以流程、CI、测试网来保证代码质量，软件人员聚焦自己的工作
 
 开发人员可根据需要“任意”修改代码（可能是bugfix，可能是需求，也可能是认为代码不好或有更好的实现方式）
 自动化的质量保障：1）任意开发人员（甚至不了解本项目的工程结构）能够自动构建出软件并获取到修改前后的代码质量数据变化；2）工具自动以修改后的软件完成基本功能的简单用例测试
-编译、用例执行OK后，开发人员可发起review流程；召集本项目的人员参与代码检视并给出意见（至少要多数给出pass）
-修改review意见后重跑基本功能，之后提交给commiter或模块、架构师审核（架构师只专注代码质量和软件架构）
-
-</div><p class="readmore"><a href="/2018/11/17/%E5%B7%A5%E7%A8%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/22/Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">Jitsi安装部署</a></h1><div class="post-meta">2018-10-22</div><div class="post-content">官方部署指导自动化一键部署： https://github.com/jitsi/jitsi-meet/blob/master/doc/quick-install.md
+编...</div><p class="readmore"><a href="/2018/11/17/%E5%B7%A5%E7%A8%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/22/Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">Jitsi安装部署</a></h1><div class="post-meta">2018-10-22</div><div class="post-content">官方部署指导自动化一键部署： https://github.com/jitsi/jitsi-meet/blob/master/doc/quick-install.md
 自定义手工部署：https://github.com/jitsi/jitsi-meet/blob/master/doc/manual-install.md
-完整的Jitsi部署图12345678910111213141516171819202122                   +                           +                   |                           |                   |                           |                   v                           |                  443                          |               +-------+                       |               |       |                       |               | NginX |                       |               |       |                       |               +--+-+--+                       |                  | |                          |+------------+    | |    +--------------+      ||            |    | |    |              |      || jitsi-meet +&lt;---+ +---&gt;+ prosody/xmpp |      ||            |files 5280 |              |      |+------------+           +--------------+      v                     5222,5347^    ^5347  4443 tcp/10000 udp                +--------+    |    |    +-------------+                |        |    |    |    |             |                | jicofo +----^    ^----+ videobridge |                |        |              |             |                +--------+              +-------------+
-
-
-
-准备工作
-一台云虚拟机，配置要求至少“2u4g，5Mbps公网带宽”，系统为ubuntu(建议16.10, 低版本需要额外配置openjdk)
-一个可用的域名，以下步骤均以“example.com”为例，需要绑定到上述虚拟机(此步骤参考云服务商配置文档)
-
-步骤一：软件源地址配置1 配置jitsi官方源地址
-12echo &#x27;deb https://download.jitsi.org stable/&#x27; &gt;&gt; /etc/apt/sources.list.d/jitsi-stable.listwget -qO -  https://download.jitsi.org/jitsi-key.gpg.key | apt-key add -
-
-2 配置openjdk源地址(系统为ubuntu 14.04版本时需要)
-1add-apt-reposotory ppa:openjdk-r/ppa
-
-3 更新软件源缓存
-1apt-get update
-
-步骤二：安装配置Nginx安装:
-1apt-get -y install nginx
-
-配置:
-1 新增nginx配置文件
-12touch /etc/nginx/sites-available/example.comln -s /etc/nginx/sites-enabled/example.com
-
-2 修改nginx主配置文件&#x2F;etc&#x2F;nginx&#x2F;nginx.conf，包含新增的配置
-12# 去除行首的注释标记include /etc/nginx/sites-enabled/*;
-
-3 参考如下文件配置，将其中的网址”jitsi-meet.example.com”均替换为自己准备的域名”example.com”
-​	https://github.com/jitsi/jitsi-meet/blob/master/doc/debian/jitsi-meet/jitsi-meet.example
-注意，如果使用自动化安装，必须在安装jitsi-meet之前安装nginx。否则自动化脚本未检测到nginx时会将自己配置为使用自带的jetty作web容器的运行模式，不利于后续的部署。
-步骤三：安装jitsi-meet1apt-get -y install jitsi-meet
-
-1 安装过程中会弹出两次配置输入窗口：
-a. 要求配置hostname：此处填写前面已经准备好的域名，比如“example.com”
-b. 询问是否自动创建证书：此处按默认回车生成即可，后面会通过脚本重新替换掉证书
-
-2 重启下xmpp服务器
-service prosody restart
-
-步骤四：创建公网证书上述安装步骤默认生成的证书在公网上访问是不可信的，jitsi的app也会因此无法成功连上我们自己部署的服务器。按照如下步骤可以从“letsencrypt”临时申请到一套可信的公网证书：
-1 停止nginx服务(后续申请步骤需要使用到80端口)
-1service nginx stop
-
-2 执行脚本申请公网证书
-1/usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh
-
-生成的证书位置：&#x2F;etc&#x2F;letsencrypt&#x2F;live&#x2F;example.com&#x2F;
-3 检查nginx的证书配置
-查看nginx配置文件（&#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F;example.com）内的证书路径是否正确，如果不对则手工修改为如下配置
-12ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
-
-4 启动nginx服务
-1service nginx start
-
-5 证书自动更新配置
-从letsencrypt申请的证书默认有效期是90天，修改或新增脚本**&#x2F;etc&#x2F;cron.weekly&#x2F;letsencrypt-renew**，以便自动更新申请新的证书，脚本内容如下：
-12#!/bin/bash/usr/local/sbin/certbot-auto renew --webroot -w /usr/share/jitsi-meet &gt;&gt; /var/log/le-renew.log
-
-可以通过如下命令能否执行成功测试证书更新功能是否生效：
-1certbot-auto renew --dry-run --webroot -w /usr/share/jitsi-meet
-
-步骤五：配置ICE NAT穿透在公有云上部署时，虚拟机的内外部网络是有NAT隔离的，需要按照如下步骤配置jitsi-videobridge才能正常进行视频流传输:
-在配置文件**&#x2F;etc&#x2F;jitsi&#x2F;videobridge&#x2F;sip-communicator.properties**中增加如下配置:
-12org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS=&lt;Local.IP.Address&gt;org.ice4j.ice.harvest.NAT_HARVESTER_PUBLIC_ADDRESS=&lt;Public.IP.Address&gt;
-
-其中**&lt;Local.IP.Address&gt;为虚拟机内网本机IP地址，&lt;Public.IP.Address&gt;为公有云分配的公网IP地址。配置完成后需要重启下jitsi-videobridge**:
-1service jitsi-videobridge restart
-
-步骤六：配置STUN服务器在P2P场景下，需要配置STUN服务器以便实现客户端的NAT穿越、直连。默认jitsi-meet使用的STUN服务器是google的，在国内使用时经常遇到连接问题，需要修改配置文件**&#x2F;etc&#x2F;jitsi&#x2F;meet&#x2F;example.com-config.js**，找到stunServers配置项，在前面新增如下两个服务器配置：
-12&#123; urls: &#x27;stun:stun.freeswitch.org&#x27; &#125;,&#123; urls: &#x27;stun:stun.ideasip.com&#x27; &#125;,
-
-修改后的配置:
-12345678// The STUN servers that will be used in the peer to peer connectionsstunServers: [    &#123; urls: &#x27;stun:stun.freeswitch.org&#x27; &#125;,    &#123; urls: &#x27;stun:stun.ideasip.com&#x27; &#125;,    &#123; urls: &#x27;stun:stun.l.google.com:19302&#x27; &#125;,    &#123; urls: &#x27;stun:stun1.l.google.com:19302&#x27; &#125;,    &#123; urls: &#x27;stun:stun2.l.google.com:19302&#x27; &#125;],
-
-说明：实际生产、发布环境需要独立部署stun&#x2F;turn服务器以便实现P2P穿透或转发。
-附: WebRTC的P2P连接过程:
-
-尝试直连.
-直连失败则通过stun服务器进行穿透后直连.
-无法穿透则通过turn服务器中转视频流.（需要消耗较多服务器端资源）
-
-步骤七：配置公有云端口映射策略由于安全原因，公有云默认是限制了端口访问的。为了能够正确在公有云上使用jitsi进行视频传输，至少需要开启如下端口的访问权限：
-
-
-
-类型
-协议
-端口&#x2F;范围
-描述
-
-
-
-IPv4
-TCP
-443
-HTTPS默认端口: 1. jitsi-meet页面资源加载 2. xmpp服务的BOSH接入
-
-
-IPv4
-UDP
-10000-20000
-RTP&#x2F;RTCP连接：WebRTC客户端和服务端SFU(jitsi-videobridge)之间的视频流传输
-
-
-IPv4
-TCP
-4443
-UDP不可用时jitsi-videobridge的备用接入端口
-
-
-以华为云为例，进入“控制台”-&gt;”服务列表”-&gt;”弹性公网IP”-&gt;”安全组”，选择部署用的虚拟机已绑定的安全组策略，按照如下示例图配置端口：
-
-基本功能验证至少需要验证如下两种场景下的视频传输功能：
-
-验证两客户端接入时p2p功能。
-验证三个及以上客户端接入时jitsi-videobridge视频分发功能。
-
-使用chrome浏览器或APP打开地址”</div><p class="readmore"><a href="/2018/10/22/Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/11/Jitsi%E6%9E%B6%E6%9E%84/">Jitsi架构</a></h1><div class="post-meta">2018-10-11</div><div class="post-content">常见的Jitsi部署图12345678910111213141516171819202122                   +                           +                   |                           |                   |                           |                   v                           |                  443                          |               +-------+                       |               |       |                       |               | NginX |                       |               |       |                       |               +--+-+--+                       |                  | |                          |+------------+    | |    +--------------+      ||            |    | |    |              |      || jitsi-meet +&lt;---+ +---&gt;+ prosody/xmpp |      ||            |files 5280 |              |      |+------------+           +--------------+      v                     5222,5347^    ^5347  4443 tcp/10000 udp                +--------+    |    |    +-------------+                |        |    |    |    |             |                | jicofo +----^    ^----+ videobridge |                |        |              |             |                +--------+              +-------------+
-
-
-
-主要服务Nginx：
-
-作为jitsi-meet的静态资源服务器
-作为后台服务器的反向代理
-
-Jitsi-meet：
-jitsi的web客户端，浏览器访问时会从服务器端拉取jitsi-meet静态资源文件，在浏览器内加载为客户端。
-Prosody&#x2F;xmpp：
-xmpp服务器端
-Jitsi-jicofo：
-jitsi服务端的会议&#x2F;房间管理部件
-Jitsi-videobridge：
-核心的SFU部件，完成媒体数据流的管理和重定向
-其他扩展服务Jigasi：
-SIP网关，实现和其他SIP服务器的对接，支持：
-
-基于SIP协议的对接：支持单账户的呼出和呼入
-作为转换器（Transcription）实现音频到文本的转换，需要Google Cloud speech-to-text API的支持
-
-</div><p class="readmore"><a href="/2018/10/11/Jitsi%E6%9E%B6%E6%9E%84/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/10/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计</a></h1><div class="post-meta">2018-10-10</div><div class="post-content">架构设计的时候需要分层次，一层层去思考完成相关设计。
+完整的Jitsi部署图123456789101112131415161718...</div><p class="readmore"><a href="/2018/10/22/Jitsi%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/11/Jitsi%E6%9E%B6%E6%9E%84/">Jitsi架构</a></h1><div class="post-meta">2018-10-11</div><div class="post-content">常见的Jitsi部署图12345678910111213141516171819202122                   +                           +                   |                           |                   |                           |          ...</div><p class="readmore"><a href="/2018/10/11/Jitsi%E6%9E%B6%E6%9E%84/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/10/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计</a></h1><div class="post-meta">2018-10-10</div><div class="post-content">架构设计的时候需要分层次，一层层去思考完成相关设计。
 比如：
 0层：整体的部件组成及其相关关系
 1层：业务流和关键接口 数据模型
@@ -226,12 +25,5 @@ SIP网关，实现和其他SIP服务器的对接，支持：
 3层：资源&#x2F;人力&#x2F;成本&#x2F;工作量等核算
 每一层都有每一层的职责和范围，往往是由大至小，由宽入细。
 架构就好比金字塔，各层次之间是环环相扣，1层的分析取决于0层的设计。
-混乱的设计往往容易出现架构层次不匹配的问题，比如分析1层时突然觉得0层的部分结论有问题，就又用新的方式去做了1层的分析。这里面有两个问题：
-
-层次间出现偏差，就好比一栋房子并不是垂直建的，而是层次不齐，这样必然无法牢固。
-没有在应有的层次解决问题，根基不稳固必然不可靠。
-
-此时正确的方法应该是回去重新讨论0层对应部分的问题，确定后才继续分析1层的方案。即每一层只讨论每一层次的问题，如果对任何一个层次有疑问则在对应层次上重新分析，在该层次的方案间重新对比。方案上的问题“反复”往往就是因为没有在该有的层次上先讨论清楚“根基”问题，导致方案上的争论无休止。
-</div><p class="readmore"><a href="/2018/10/10/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/03/03/committer%E6%9C%BA%E5%88%B6/">committer机制</a></h1><div class="post-meta">2018-03-03</div><div class="post-content">人才培养是一个艰难的过程，最近就已经遇到过很多次。我们的员工能力往往并没有主管想得那么强，当你在审视方案、检视代码时说要解耦、依赖关系应该倒过来。结果发现员工并不理解这些“词汇”的含义是什么。
-回归到研发的本质上来首先应该是导师检视审核代码的过程其实是最好的人员培养过程。很多经验告诉我们 任何形式的培训、学习都不如实践来的	快而有效，然而实践很多时候确是可遇不可求的（还记得别人问你今年又写了多少代码后的尴尬吗？）那么 我们就需要把人才培养过程尽可能的融入到宝贵的开发过程中。
-</div><p class="readmore"><a href="/2018/03/03/committer%E6%9C%BA%E5%88%B6/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://blog.techpoetry.cn"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E6%84%9F/">随感</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Thread/" style="font-size: 15px;">Thread</a> <a href="/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/tags/tools/" style="font-size: 15px;">tools</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/regexp/" style="font-size: 15px;">regexp</a> <a href="/tags/jenkins/" style="font-size: 15px;">jenkins</a> <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" style="font-size: 15px;">持续集成</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/memory/" style="font-size: 15px;">memory</a> <a href="/tags/valgrind/" style="font-size: 15px;">valgrind</a> <a href="/tags/memory-leak/" style="font-size: 15px;">memory leak</a> <a href="/tags/memory-damage/" style="font-size: 15px;">memory damage</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JDK/" style="font-size: 15px;">JDK</a> <a href="/tags/Maven/" style="font-size: 15px;">Maven</a> <a href="/tags/Synology/" style="font-size: 15px;">Synology</a> <a href="/tags/Vmware/" style="font-size: 15px;">Vmware</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/committer/" style="font-size: 15px;">committer</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 15px;">架构</a> <a href="/tags/Jitsi/" style="font-size: 15px;">Jitsi</a> <a href="/tags/SFU/" style="font-size: 15px;">SFU</a> <a href="/tags/WebRTC/" style="font-size: 15px;">WebRTC</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 15px;">软件工程</a> <a href="/tags/SIGSEGV/" style="font-size: 15px;">SIGSEGV</a> <a href="/tags/SSR/" style="font-size: 15px;">SSR</a> <a href="/tags/%E7%BF%BB%E5%A2%99/" style="font-size: 15px;">翻墙</a> <a href="/tags/shadowsock/" style="font-size: 15px;">shadowsock</a> <a href="/tags/iperf/" style="font-size: 15px;">iperf</a> <a href="/tags/%E5%B8%A6%E5%AE%BD/" style="font-size: 15px;">带宽</a> <a href="/tags/%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;">设计</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 15px;">负载均衡</a> <a href="/tags/elf/" style="font-size: 15px;">elf</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/object/" style="font-size: 15px;">object</a> <a href="/tags/BloomFilter/" style="font-size: 15px;">BloomFilter</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 15px;">大数据</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/IntelliJ/" style="font-size: 15px;">IntelliJ</a> <a href="/tags/ddns/" style="font-size: 15px;">ddns</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/beyond-compare/" style="font-size: 15px;">beyond compare</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/07/09/SurfaceView,%20TextureView,%20SurfaceTexture%20%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E8%BD%AC%EF%BC%89/">SurfaceView, TextureView, SurfaceTexture 等的区别（转）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">Beyond Compare自动化脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/26/Docker%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/">Docker安装和使用配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/%E5%9C%A8Mac%E4%B8%8A%E5%88%B6%E4%BD%9Cubuntu-USB%E5%AE%89%E8%A3%85%E7%9B%98/">在Mac上制作ubuntu USB安装盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/%E4%BD%BF%E7%94%A8supervisor%E8%BF%9B%E8%A1%8C%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86/">使用supervisor进行后台服务管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/">Mac使用ffmpeg转换DTS音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/24/librdkafka%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/">librdkafka编译构建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/IntelliJ%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">IntelliJ基本配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/">布隆过滤器(BloomFilter)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/">Linux目标文件</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/chun-wang" title="Github" target="_blank">Github</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/." rel="nofollow">Spring Favor.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.1"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.1"></script></div></body></html>
+混乱的设计往往容易出现架构层次不匹配的...</div><p class="readmore"><a href="/2018/10/10/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/03/03/committer%E6%9C%BA%E5%88%B6/">committer机制</a></h1><div class="post-meta">2018-03-03</div><div class="post-content">人才培养是一个艰难的过程，最近就已经遇到过很多次。我们的员工能力往往并没有主管想得那么强，当你在审视方案、检视代码时说要解耦、依赖关系应该倒过来。结果发现员工并不理解这些“词汇”的含义是什么。
+回归到研发的本质上来首先应该是导师检视审核代码的过程其实是最好的人员培养过程。很多经验告诉我们 任何形式的培训、学习都不如实践来的	快而有效，然而实践很多时候确是可遇不可求的（还记得别人问你今年又写了多少代...</div><p class="readmore"><a href="/2018/03/03/committer%E6%9C%BA%E5%88%B6/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://blog.techpoetry.cn"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E6%84%9F/">随感</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Thread/" style="font-size: 15px;">Thread</a> <a href="/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/tags/tools/" style="font-size: 15px;">tools</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/regexp/" style="font-size: 15px;">regexp</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/memory/" style="font-size: 15px;">memory</a> <a href="/tags/valgrind/" style="font-size: 15px;">valgrind</a> <a href="/tags/jenkins/" style="font-size: 15px;">jenkins</a> <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" style="font-size: 15px;">持续集成</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JDK/" style="font-size: 15px;">JDK</a> <a href="/tags/memory-leak/" style="font-size: 15px;">memory leak</a> <a href="/tags/memory-damage/" style="font-size: 15px;">memory damage</a> <a href="/tags/Maven/" style="font-size: 15px;">Maven</a> <a href="/tags/Synology/" style="font-size: 15px;">Synology</a> <a href="/tags/Vmware/" style="font-size: 15px;">Vmware</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/committer/" style="font-size: 15px;">committer</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 15px;">架构</a> <a href="/tags/Jitsi/" style="font-size: 15px;">Jitsi</a> <a href="/tags/SFU/" style="font-size: 15px;">SFU</a> <a href="/tags/WebRTC/" style="font-size: 15px;">WebRTC</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 15px;">软件工程</a> <a href="/tags/SIGSEGV/" style="font-size: 15px;">SIGSEGV</a> <a href="/tags/iperf/" style="font-size: 15px;">iperf</a> <a href="/tags/%E5%B8%A6%E5%AE%BD/" style="font-size: 15px;">带宽</a> <a href="/tags/%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;">设计</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 15px;">负载均衡</a> <a href="/tags/SSR/" style="font-size: 15px;">SSR</a> <a href="/tags/%E7%BF%BB%E5%A2%99/" style="font-size: 15px;">翻墙</a> <a href="/tags/shadowsock/" style="font-size: 15px;">shadowsock</a> <a href="/tags/elf/" style="font-size: 15px;">elf</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/object/" style="font-size: 15px;">object</a> <a href="/tags/BloomFilter/" style="font-size: 15px;">BloomFilter</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 15px;">大数据</a> <a href="/tags/IntelliJ/" style="font-size: 15px;">IntelliJ</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/ddns/" style="font-size: 15px;">ddns</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/beyond-compare/" style="font-size: 15px;">beyond compare</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/07/09/SurfaceView,%20TextureView,%20SurfaceTexture%20%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E8%BD%AC%EF%BC%89/">SurfaceView, TextureView, SurfaceTexture 等的区别（转）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Beyond-Compare%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">Beyond Compare自动化脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/26/Docker%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/">Docker安装和使用配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/%E5%9C%A8Mac%E4%B8%8A%E5%88%B6%E4%BD%9Cubuntu-USB%E5%AE%89%E8%A3%85%E7%9B%98/">在Mac上制作ubuntu USB安装盘</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/%E4%BD%BF%E7%94%A8supervisor%E8%BF%9B%E8%A1%8C%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86/">使用supervisor进行后台服务管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/09/Mac%E4%BD%BF%E7%94%A8ffmpeg%E8%BD%AC%E6%8D%A2DTS%E9%9F%B3%E9%A2%91/">Mac使用ffmpeg转换DTS音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/24/librdkafka%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA/">librdkafka编译构建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/30/IntelliJ%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">IntelliJ基本配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/26/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8-BloomFilter/">布隆过滤器(BloomFilter)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/22/Linux%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6/">Linux目标文件</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/chun-wang" title="Github" target="_blank">Github</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/." rel="nofollow">Spring Favor.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.1"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.1"></script></div></body></html>
